@@ -12,6 +12,3 @@ fetch('https://api.scryfall.com/cards/named?fuzzy=aust+com',{
   .then(function (data) {
     console.log(data);
   });
-
-
-
