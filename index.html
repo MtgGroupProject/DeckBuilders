@@ -24,18 +24,27 @@
 
         <h2>Search</h2>
         <form>
+            
             <div class="grid-x grid-padding-x">
                 <div class="large-4 medium-4 cell">
                     <label>Card Name</label>
-                    <input type="text" placeholder="Card Name" />
+                    <input id="MTG-Input" type="text" placeholder="Card Name" />
+                    <div><a href="#" class="button" class="small-4 small-4 cell" id="search-MTG-button">Search</a></div>
                 </div>
             </div>
+        </form> 
+        <form>
+            
             <div class="grid-x grid-padding-x">
                 <div class="large-4 medium-4 cell">
                     <label>Enter CMC</label>
-                    <input type="text" placeholder="CMC" />
+                    <input id="CMC-Input" type="text" placeholder="CMC" />
+                    <div><a href="#" class="button" class="small-4 small-4 cell" id="search-MTG-button">Search</a></div>
                 </div>
             </div>
+        </form>
+        <form>
+            
             <div class="grid-x grid-padding-x">
                 <div class="large-4 medium-4 cell">
                     <label>Mana</label>
@@ -44,9 +53,11 @@
                         <option value="island">Island</option>
                         <option value="swamp">Swamp</option>
                         <option value="plains">Plains</option>
+                        <option value="mountain">Mountain</option>
                     </select>
                 </div>
             </div>
+            
         </form>
     </div>
 
@@ -211,7 +222,9 @@
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- <script src="assets/js/app.js"></script> -->
+
 </body>
 
 </html>
