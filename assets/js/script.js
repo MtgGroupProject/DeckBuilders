@@ -72,35 +72,34 @@ function currentMTGSreach(searchValue) {
 )};
 
 function currentCMCSreach(searchCMCValue) {
-  var colorArray = ["W","U","B","G","R"];
-  var colorChoice = ""
+  var colorArray = ""
+ 
 
   if ((searchCMCValue == "white")|| (searchCMCValue == "plains")){
-    colorChoice = colorArray[0];
+    searchCMCValue = colorArray[0];
   } 
   if ((searchCMCValue == "blue")|| (searchCMCValue == "island")){
-    colorChoice = colorArray[1];
+    searchCMCValue = colorArray[1];
   } 
   if ((searchCMCValue == "black")|| (searchCMCValue == "swamp")){
-    colorChoice = colorArray[2];
+    searchCMCValue = colorArray[2];
   } 
   if ((searchCMCValue == "green")|| (searchCMCValue ==="forest")){
-    colorChoice = colorArray[3];
+    searchCMCValue = colorArray[3];
   } 
   if ((searchCMCValue == "red")|| (searchCMCValue == "mountain")){
-    colorChoice = colorArray[4];
+    searchCMCValue = colorArray[4];
   }
-;
-  var queryURL = 'https://api.scryfall.com/cards/search?order=color&q=' + colorChoice;
+
+  var queryURL = 'https://api.scryfall.com/cards/search?order=color_identity&q=' + searchCMCValue;
   fetch(queryURL, {
     method: "GET",
   })
     .then(function (response) {
       return response.json();
-      console.log(colorChoice);
     })
     .then(function (response) {
     console.log(response);
     })  
+  
   }
-   
