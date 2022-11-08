@@ -1,6 +1,9 @@
 var searchMTGinput = $("#MTG-Input")
 var searchCMCinput = $("CMC-Input")
-var sreachMTGBtn = $("#search-MTG-button")
+var searchMTGBtn = $("#search-MTG-button")
+var searchCMCbtn = $("#search-CMC-button")
+
+
 
 $(document).on("submit", function(event){
   event.preventDefault();
@@ -13,39 +16,43 @@ $(document).on("submit", function(event){
   currentCMCSreach(searchCMCValue);
  
   searchMTGinput.val(""); 
+  searchCMCValue.val("");
 });
 
-sreachMTGBtn.on("click", function (event) {
+searchMTGBtn.on("click", function (event) {
   event.preventDefault();
 
   // Grab value entered into search bar
   var searchValue = searchMTGinput.val().trim();
-  var searchCMCValue = searchCMCinput.val();
+
   if (searchValue == "") {
     alert("Please enter card name");
     return;
   }
   currentMTGSreach(searchValue);
-  currentCMCSreach(searchCMCValue);
+  
 
   searchMTGinput.val("");
+ 
 });
 
 
+searchCMCbtn.on("click", function (event) {
+  event.preventDefault();
 
-function currentCMCSreach(searchValue) {
-  var queryURL = 'https://api.scryfall.com/cards/search?order=cmc&q=' + searchValue;
-  fetch(queryURL, {
-    method: "GET",
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      
-      console.log(response);
-}
-)}
+  
+  var searchCMCValue = searchCMCinput.val();
+
+  if (searchValue == "") {
+    alert("Please enter card name");
+    return;
+  }
+  currentCMCSreach(searchCMCValue);
+  
+
+  searchCMCinput.val("");
+ 
+});
 
 function currentMTGSreach(searchValue) {
   var queryURL = 'https://api.scryfall.com/cards/search?order=name&q=' + searchValue;
@@ -60,4 +67,19 @@ function currentMTGSreach(searchValue) {
     console.log(response.data[0].name)
      
 }
+)};
+
+function currentCMCSreach(searchCMCValue) {
+  var queryURL = 'https://api.scryfall.com/cards/search?order=cmc&q=' + searchCMCValue;
+  fetch(queryURL, {
+    method: "GET",
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      
+      console.log(response);
+}
 )}
+
