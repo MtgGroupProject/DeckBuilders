@@ -43,10 +43,12 @@ searchCMCbtn.on("click", function (event) {
   
   var searchCMCValue = searchCMCinput.val();
 
-  if (searchValue == "") {
-    alert("Please enter card name");
+  if (searchCMCValue == "") {
+    alert("Please enter card CMC");
     return;
   }
+
+  
   currentCMCSreach(searchCMCValue);
   
 
@@ -70,16 +72,35 @@ function currentMTGSreach(searchValue) {
 )};
 
 function currentCMCSreach(searchCMCValue) {
-  var queryURL = 'https://api.scryfall.com/cards/search?order=cmc&q=' + searchCMCValue;
+  var colorArray = ["W","U","B","G","R"];
+  var colorChoice = ""
+
+  if ((searchCMCValue == "white")|| (searchCMCValue == "plains")){
+    colorChoice = colorArray[0];
+  } 
+  if ((searchCMCValue == "blue")|| (searchCMCValue == "island")){
+    colorChoice = colorArray[1];
+  } 
+  if ((searchCMCValue == "black")|| (searchCMCValue == "swamp")){
+    colorChoice = colorArray[2];
+  } 
+  if ((searchCMCValue == "green")|| (searchCMCValue ==="forest")){
+    colorChoice = colorArray[3];
+  } 
+  if ((searchCMCValue == "red")|| (searchCMCValue == "mountain")){
+    colorChoice = colorArray[4];
+  }
+;
+  var queryURL = 'https://api.scryfall.com/cards/search?order=color&q=' + colorChoice;
   fetch(queryURL, {
     method: "GET",
   })
     .then(function (response) {
       return response.json();
+      console.log(colorChoice);
     })
     .then(function (response) {
-      
-      console.log(response);
-}
-)}
-
+    console.log(response);
+    })  
+  }
+   
