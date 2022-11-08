@@ -1,5 +1,5 @@
 
-fetch('https://api.scryfall.com/cards/named?fuzzy=aust+com',{ 
+fetch('https://api.scryfall.com/catalog/card-names',{ 
 
 
   method: 'GET', //GET is the default.
