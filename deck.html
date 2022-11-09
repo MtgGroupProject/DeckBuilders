@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTG Deckbuilder App</title>
+    <link rel="stylesheet" href="assets/css/foundation.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+
+    <!-- Header area -->
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+                <h1>Magic: The Gathering Deckbuilder App</h1>
+            </div>
+        </div>
+
+        <div class="grid-x grid-padding-x">
+            <div class="large-8 medium-8 cell">
+                <div class="grid-x grid-padding-x">
+                    <!-- Mana curve by color graph container -->
+                    <div class="large-6 medium-6 cell">
+                        <div class="callout">
+                            <p>Mana curve by color</p>
+                        </div>
+                    </div>
+                    <!-- Mana curve by mana cost graph container -->
+                    <div class="large-6 medium-6 cell">
+                        <div class="callout">
+                            <p>Mana curve by mana cost</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x">
+                    <!-- Card catagory break down container -->
+                    <div class="large-6 medium-6 cell">
+                        <div class="callout">
+                            <p>Card catagory break down</p>
+                        </div>
+                    </div>
+                    <!-- Pricing total container -->
+                    <div class="large-6 medium-6 cell">
+                        <div class="callout">
+                            <p>Pricing total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Decklist container -->
+            <div class="large-4 medium-4 cell">
+                <div class="callout">
+                    <p>Deck List</p>
+                    <p>Deck List</p>
+                    <p>Deck List</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid-x grid-padding-x">
+            <!-- Map search form container -->
+            <div class="large-4 medium-4 cell">
+                <form>
+                    <label>Search Stores and Events</label>
+                    <input type="text" placeholder="Enter Location" />
+                    <a class="button" class="small-4 small-4 cell">Search</a>
+                </form>
+            </div>
+            <!-- Map container -->
+            <div class="large-8 medium-8 cell" id="map"></div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="assets/js/vendor/what-input.js"></script>
+    <script src="assets/js/vendor/foundation.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script asynch defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM&callback=initMap&v=weekly"></script>
+</body>
+
+</html>
