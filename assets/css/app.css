@@ -1,5 +1,5 @@
 .search-results{
-    height: 15em;
+    height: 30em;
     overflow: scroll;
 }
 .search-names{
@@ -18,7 +18,18 @@ p{
     width: 6em;
     height: 2em;
     border-radius: 10px;
-    background-color: skyblue;
     color: darkgray;
     display: none;  
+}
+.btn-1{
+    background-color: lightcoral;
+}
+.btn-2{
+    background-color: rgb(11, 153, 18);
+}
+.btn-3{
+    background-color: rgb(32, 58, 173);
+}
+.names-list{
+    list-style: none;
 }

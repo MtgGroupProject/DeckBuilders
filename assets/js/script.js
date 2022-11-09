@@ -36,6 +36,7 @@ const cmcEl = $("#CMC-Input");
 const dropDownEl = document.querySelector(".mana-filter");
 const orderDropDownEl = document.querySelector(".search-order");
 const searchHeaderEl = $(".search-header");
+const namesListEl = document.querySelector(".names-list");
 
 // If card name search has multiple words, syntax: !"multiple-word-name-here"
 function urlConstructor(order, qString, color, cmc, type, name){
@@ -110,7 +111,7 @@ function urlConstructor(order, qString, color, cmc, type, name){
 
   }
   else{
-    searchNamesEl.text("Searching...");
+    // searchNamesEl.text("Searching...");
   }
   return finishedURL;
 };
@@ -145,16 +146,34 @@ function displayError(){
 }
 
 function populateResults(array){
-  let joinedArray = array.join(", ");
-  console.log(joinedArray);
-  searchNamesEl.text(joinedArray);
+  for(let i=0;i<array.length;i++){
+    let listItem = document.createElement("li");
+    let listAtag = document.createElement("a")
+    listAtag.textContent = array[i];
+    namesListEl.appendChild(listItem);
+    listItem.appendChild(listAtag);
+    console.log(listItem);
+  }
 }
 
 const resultsAreaEl = $(".search-results");
 const searchNamesEl = $(".search-names");
 
 
-document.getElementById("cmc-search-btn").addEventListener("click", function(){
+function clearResults(){
+  let listItems = document.querySelectorAll("a");
+  let listItemslist = document.querySelectorAll("li");
+  for(let i=0;i<namesArray.length;i++){
+    listItemslist[i].removeChild(listItems[i]);
+    namesListEl.removeChild(listItemslist[i]);
+  }
+}
+
+
+
+document.getElementById("cmc-search-btn").addEventListener("click", function(event){
+  event.preventDefault();
+  clearResults();
   namesArray=[];
   let builtURL = urlConstructor(orderDropDownEl.value, fullText.string, dropDownEl.options[dropDownEl.selectedIndex].text, cmcEl.val(), null, cardNameEl.val());
   let fetchedNames = fetchCards(builtURL);
