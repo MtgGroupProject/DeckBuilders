@@ -25,26 +25,47 @@
             <div class="large-4 medium-4 cell">
                 <form>
                     <h2>Search</h2>
-                    <label>Card Name</label>
+                    <label>Search by card name:</label>
                     <input id="MTG-Input" type="text" placeholder="Card Name" />
-                    <a href="#" class="button" class="small-4 small-4 cell" id="search-MTG-button">Search</a>
-                    <label>Enter CMC</label>
+                    <label>Search by converted mana cost:</label>
                     <input id="CMC-Input" type="text" placeholder="CMC" />
-                    <a href="#" class="button" class="small-4 small-4 cell" id="search-MTG-button">Search</a>
-                    <label>Mana</label>
-                    <select>
+                    <label>Filter by mana type:</label>
+                    <select class="mana-filter">
+                        <option></option>
+                        <option value="colorless">Colorless</option>
                         <option value="forest">Forest</option>
                         <option value="island">Island</option>
                         <option value="swamp">Swamp</option>
                         <option value="plains">Plains</option>
                         <option value="mountain">Mountain</option>
                     </select>
+                    <label>Order results by:</label>
+                    <select class="search-order" disabled>
+                        <option value="name">Alphabetical(Default)</option>
+                        <option value="set">Set</option>
+                        <option value="released">Date Released</option>
+                        <option value="rarity">Rarity</option>
+                        <option value="usd">USD ($)</option>
+                        <option value="tix">TIX Price</option>
+                        <option value="eur">Euro (&euro;)</option>
+                        <option value="power">Power</option>
+                        <option value="toughness">Toughness</option>
+                        <option value="edhrec">EDHREC Ranking</option>
+                        <option value="penny">Penny Dreadful Ranking</option>
+                        <option value="artist">Front-side Artist Name</option>
+                        <option value="review">Review(Power/Popularity)</option>
+                    </select>
+                    <a class="button" class="small-4 small-4 cell" id="cmc-search-btn">Search</a>
                 </form>
             </div>
             <!-- Search results container -->
             <div class="large-8 medium-8 cell">
-                <div class="callout">
-                    <p>Search Results</p>
+                <div class="callout search-results">
+                    <p class="search-header">Search Results</p>
+                    <button class="header-btn btn-1">Hi</button>
+                    <button class="header-btn btn-2">Hi</button>
+                    <button class="header-btn btn-3">Hi</button>
+                    <div class="search-names"></div>
                 </div>
             </div>
         </div>
