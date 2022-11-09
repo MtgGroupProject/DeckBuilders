@@ -138,53 +138,9 @@ function fetchCards(apiURL){
       console.log(error.message);
       displayError();
     })
-    return namesArray;
-};
-function displayError(){
-  searchNamesEl.text("No results found.");
+    .then(function (response) {
+      
+    console.log(response.data[0].name)
+     
 }
-
-function populateResults(array){
-  let joinedArray = array.join(", ");
-  console.log(joinedArray);
-  searchNamesEl.text(joinedArray);
-}
-
-const resultsAreaEl = $(".search-results");
-const searchNamesEl = $(".search-names");
-
-
-document.getElementById("cmc-search-btn").addEventListener("click", function(){
-  namesArray=[];
-  let builtURL = urlConstructor(orderDropDownEl.value, fullText.string, dropDownEl.options[dropDownEl.selectedIndex].text, cmcEl.val(), null, cardNameEl.val());
-  let fetchedNames = fetchCards(builtURL);
-  console.log(builtURL);
-  cmcEl.val("");
-  cardNameEl.val("");
-});
-
-$(".mana-filter").on("change", function(){
-  if($(".mana-filter").val()){
-    $(".search-order").attr("disabled", false);
-  }
-  if(!$(".mana-filter").val()){
-    $(".search-order").attr("disabled", true);
-  }
-});
-
-$("#CMC-Input").on("keyup", function(){
-  if($("#CMC-Input").val()){
-    $(".search-order").attr("disabled", false);
-  }
-  if(!$("#CMC-Input").val()){
-    $(".search-order").attr("disabled", true);
-  }
-});
-$("#MTG-Input").on("keyup", function(){
-  if($("#MTG-Input").val()){
-    $(".search-order").attr("disabled", false);
-  }
-  if(!$("#MTG-Input").val()){
-    $(".search-order").attr("disabled", true);
-  }
-});
+)}
