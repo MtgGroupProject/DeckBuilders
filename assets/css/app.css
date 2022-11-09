@@ -1,7 +1,10 @@
-.search-results{
-    height: 15em;
+.callout.search-results{
+    height: 30em;
     overflow: scroll;
+    position: relative;
+    padding: 0;
 }
+
 .search-names{
 
 }
@@ -9,16 +12,62 @@ p{
     font-weight: bold;
 }
 .search-header{
+    font-weight: bold;
     text-align: center;
     font-size: 20px;
+    top: 0;
+    background-color: lightgray;
+    position: sticky;
+    overflow: hidden;
+    padding: 0.25em;
 }
 .header-btn{
     border:none;
     outline: none;
-    width: 6em;
-    height: 2em;
+    width: fit-content;
+    padding-left: .5em;
+    padding-right: .5em;
+    height: 1.25em;
     border-radius: 10px;
-    background-color: skyblue;
-    color: darkgray;
+    color: black;
+}
+.order-container{
+    display: flex;
+    justify-content: center;
+}
+.btn-cmc{
+    background-color: lightcoral;
     display: none;  
+}
+.btn-order{
+    background-color: rgb(211, 164, 35);
+    display: none;  
+}
+.btn-colorless{
+    background-color: lightgray;
+    display: none;  
+}
+.btn-forest{
+    background-color: forestgreen;
+    display: none;  
+}
+.btn-island{
+    background-color: teal;
+    display: none;  
+}
+.btn-swamp{
+    background-color: rgb(15, 15, 13);
+    color: white;
+    display: none;  
+}
+.btn-plains{
+    background-color: blanchedalmond;
+    display: none;  
+}
+.btn-mountain{
+    background-color: red;
+    display: none;  
+}
+.names-list{
+    list-style: none;
 }
