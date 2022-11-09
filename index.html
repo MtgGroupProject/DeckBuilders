@@ -74,8 +74,16 @@
                 </div>
                 <!-- Data for currently selected card container -->
                 <div class="large-12 cell">
-                    <div class="callout">
-                        <p>Data</p>
+                    <div id="map" class="callout">
+                        <script>
+                            var map;
+                            function initMap() {
+                              map = new google.maps.Map(document.getElementById('map'), {
+                                center: {lat:42.354721560846954, lng:-87.94076879213797, },
+                                zoom: 15
+                              });
+                            }
+                          </script>
                     </div>
                 </div>
             </div>
@@ -98,12 +106,12 @@
         </div>
     </div>
 
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM&callback=initMap" async defer></script>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
     <script src="./assets/js/script.js"></script>
-    <!-- <script src="assets/js/app.js"></script> -->
+    <!-- <script src="assets/js/app.js"></script>  -->
 
 </body>
 
