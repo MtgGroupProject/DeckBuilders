@@ -33,8 +33,8 @@ const searchBase = "https://api.scryfall.com/cards/search?"
 
 const cardNameEl = $("#MTG-Input");
 const cmcEl = $("#CMC-Input");
-const checkboxEl = $(".checkbox");
 const colorlessCheckBox = $("#colorless");
+const restOfCheckboxes = $(".checkbox-1");
 const forestCheckBox = $("#forest");
 const islandCheckBox = $("#island");
 const swampCheckBox = $("#swamp");
@@ -47,15 +47,66 @@ const cmcHeaderBtn = $(".btn-cmc");
 const orderHeaderBtn = $(".btn-order");
 
 
-const checkBoxArray = [];
-checkboxEl.on("click",function(e){
+let checkBoxObj = {};
+
+colorlessCheckBox.on("click",function(e){
   const checkbox = e.target;
   const checked = checkbox.checked;
   if(checked){
-    checkBoxArray.push(checkbox.defaultValue);
+    checkBoxObj.colorless = "colorless";
   }
   if(!checked){
-    checkBoxArray.pop(checkbox.defaultValue);
+    delete checkBoxObj.colorless;
+  }
+});
+forestCheckBox.on("click",function(e){
+  const checkbox = e.target;
+  const checked = checkbox.checked;
+  if(checked){
+    checkBoxObj.forest = "forest";
+  }
+  if(!checked){
+    delete checkBoxObj.forest;
+  }
+});
+islandCheckBox.on("click",function(e){
+  const checkbox = e.target;
+  const checked = checkbox.checked;
+  if(checked){
+    checkBoxObj.island = "island";
+  }
+  if(!checked){
+    delete checkBoxObj.island;
+  }
+});
+swampCheckBox.on("click",function(e){
+  const checkbox = e.target;
+  const checked = checkbox.checked;
+  if(checked){
+    checkBoxObj.swamp = "swamp";
+  }
+  if(!checked){
+    delete checkBoxObj.swamp;
+  }
+});
+plainsCheckBox.on("click",function(e){
+  const checkbox = e.target;
+  const checked = checkbox.checked;
+  if(checked){
+    checkBoxObj.plains = "plains";
+  }
+  if(!checked){
+    delete checkBoxObj.plains;
+  }
+});
+mountainCheckBox.on("click",function(e){
+  const checkbox = e.target;
+  const checked = checkbox.checked;
+  if(checked){
+    checkBoxObj.mountain = "mountain";
+  }
+  if(!checked){
+    delete checkBoxObj.mountain;
   }
 });
 
@@ -72,22 +123,22 @@ function urlConstructor(order, qString, color, cmc, type, name){
     }
   }
 
-  if(checkBoxArray.includes("forest")){
+  if(checkBoxObj.forest){
     manaColor = manaColor + fullText.color[4];
   }
-  if(checkBoxArray.includes("island")){
+  if(checkBoxObj.island){
     manaColor = manaColor + fullText.color[1]
   }
-  if(checkBoxArray.includes("swamp")){
+  if(checkBoxObj.swamp){
     manaColor = manaColor + fullText.color[3]
   }
-  if(checkBoxArray.includes("plains")){
+  if(checkBoxObj.plains){
     manaColor = manaColor + fullText.color[0]
   }
-  if(checkBoxArray.includes("mountain")){
+  if(checkBoxObj.mountain){
     manaColor = manaColor + fullText.color[2]
   }
-  if(checkBoxArray.includes("colorless")){
+  if(checkBoxObj.colorless){
     manaColor = manaColor + fullText.color[5]
   }
 
@@ -293,7 +344,7 @@ document.getElementById("cmc-search-btn").addEventListener("click", function(eve
   event.preventDefault();
   clearResults();
   namesArray=[];
-  let builtURL = urlConstructor(orderDropDownEl.value, fullText.string, checkBoxArray, cmcEl.val(), null, cardNameEl.val());
+  let builtURL = urlConstructor(orderDropDownEl.value, fullText.string, checkBoxObj, cmcEl.val(), null, cardNameEl.val());
   let fetchedNames = fetchCards(builtURL);
   console.log(builtURL);
   cmcEl.val("");
