@@ -290,7 +290,9 @@ function fetchCards(apiURL){
     })
     .then(function(){
       populateResults(namesArray);
+      if(uriArray.length>0){
       $("#next-results").css("visibility", "visible");
+      };
       $(".searching-text").css("visibility", "hidden");
       if(uriArray.length===0){
         $("#next-results").css("visibility", "hidden");
@@ -349,6 +351,7 @@ document.getElementById("cmc-search-btn").addEventListener("click", function(eve
   console.log(builtURL);
   cmcEl.val("");
   cardNameEl.val("");
+  uriArray=[];
 });
 
 
