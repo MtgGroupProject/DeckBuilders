@@ -30,16 +30,19 @@
                     <label>Search by converted mana cost:</label>
                     <input id="CMC-Input" type="text" placeholder="CMC" />
                     <label>Filter by mana type:</label>
-                    <select class="mana-filter">
-                        <option></option>
-                        <option value="colorless">Colorless</option>
-                        <option value="forest">Forest</option>
-                        <option value="island">Island</option>
-                        <option value="swamp">Swamp</option>
-                        <option value="plains">Plains</option>
-                        <option value="mountain">Mountain</option>
-                    </select>
-                    <label>Order results by:</label>
+                    <input type="checkbox" value="colorless" name="Colorless" id="colorless" class="checkbox"></input>
+                    <label for="colorless">Coloroless</label>
+                    <input type="checkbox" value="forest" name="Forest" id="forest" class="checkbox-1"></input>
+                    <label for="forest">Forest</label>
+                    <input type="checkbox" value="island" name="Island" id="island" class="checkbox-1"></input>
+                    <label for="island">Island</label>
+                    <input type="checkbox" value="swamp" name="Swamp" id="swamp" class="checkbox-1"></input>
+                    <label for="swamp">Swamp</label>
+                    <input type="checkbox" value="plains" name="Plains" id="plains" class="checkbox-1"></input>
+                    <label for="plains">Plains</label>
+                    <input type="checkbox" value="mountain" name="Mountain" id="mountain" class="checkbox-1"></input>
+                    <label for="mountain">Mountain</label>
+                    <label>Order results by:</input>
                     <select class="search-order" disabled>
                         <option value="name">Alphabetical(Default)</option>
                         <option value="set">Set</option>
@@ -61,12 +64,24 @@
             <!-- Search results container -->
             <div class="large-8 medium-8 cell">
                 <div class="callout search-results">
-                    <p class="search-header">Search Results</p>
-                    <button class="header-btn btn-1">Hi</button>
-                    <button class="header-btn btn-2">Hi</button>
-                    <button class="header-btn btn-3">Hi</button>
+                    <div class="search-header">Search Results
+                        <div class="order-container">
+                            <button class="header-btn btn-order" name="Order"></button>
+                        </div>
+                        <div>
+                            <button class="header-btn btn-cmc" name="CMC"></button>
+                            <button class="header-btn btn-colorless"></button>
+                            <button class="header-btn btn-forest"></button>
+                            <button class="header-btn btn-island"></button>
+                            <button class="header-btn btn-swamp"></button>
+                            <button class="header-btn btn-plains"></button>
+                            <button class="header-btn btn-mountain"></button>
+                        </div>
+                    </div>
+                    <p style="visibility: hidden;" class="searching-text">Searching...</p>
                     <div class="search-names">
                         <ul class="names-list"></ul>
+                        <button class="button" class="small-4 small-4 cell" id="next-results" style="visibility: hidden;">Next Page</button>
                     </div>
                 </div>
             </div>
