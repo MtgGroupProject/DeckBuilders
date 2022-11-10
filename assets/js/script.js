@@ -289,7 +289,6 @@ function fetchCards(apiURL){
       console.log(data);
       console.log(Object.values(data.data));
       for(let i=0; i<data.data.length;i++){
-        namesArray.push(data.data[i].name);
         storedData.push(data.data[i])
       }
       if(localStorage){
@@ -303,7 +302,7 @@ function fetchCards(apiURL){
       }
     })
     .then(function(){
-      populateResults(namesArray);
+      populateResults(storedData);
       if(uriArray.length>0){
       $("#next-results").css("visibility", "visible");
       };
@@ -321,7 +320,7 @@ function fetchCards(apiURL){
 
 $("#next-results").click(function(){
   clearResults();
-  namesArray = [];
+  storedData = [];
   fetchCards(uriArray[0])
   uriArray.pop();
 })
@@ -335,8 +334,8 @@ function populateResults(array){
   for(let i=0;i<array.length;i++){
     let listItem = document.createElement("li");
     let listAtag = document.createElement("a");
-    listAtag.setAttribute("name", array[i]);
-    listAtag.textContent = array[i];
+    listAtag.setAttribute("name", array[i].name);
+    listAtag.textContent = array[i].name;
     namesListEl.appendChild(listItem);
     listItem.appendChild(listAtag);
     if(storedData[i].rarity == "uncommon"){
@@ -485,7 +484,7 @@ const searchNamesEl = $(".search-names");
 function clearResults(){
   let listItems = document.querySelectorAll("a");
   let listItemslist = document.querySelectorAll("li");
-  for(let i=0;i<namesArray.length;i++){
+  for(let i=0;i<storedData.length;i++){
     listItemslist[i].removeChild(listItems[i]);
     namesListEl.removeChild(listItemslist[i]);
   }
@@ -498,7 +497,7 @@ function capitalizeFirstLetter(string) {
 document.getElementById("cmc-search-btn").addEventListener("click", function(event){
   event.preventDefault();
   clearResults();
-  namesArray=[];
+  storedData=[];
   let builtURL = urlConstructor(orderDropDownEl.value, fullText.string, checkBoxObj, cmcEl.val(), null, cardNameEl.val());
   let fetchedNames = fetchCards(builtURL);
   console.log(builtURL);
