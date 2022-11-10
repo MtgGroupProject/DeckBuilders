@@ -45,6 +45,13 @@ const searchHeaderEl = $(".search-header");
 const namesListEl = document.querySelector(".names-list");
 const cmcHeaderBtn = $(".btn-cmc");
 const orderHeaderBtn = $(".btn-order");
+const currentCardEl = $(".current-card");
+const historyCardContEl = $(".history-card-container");
+
+
+// setTimeout(function(){
+//   document.body.className="preload";
+// },1);
 
 
 let checkBoxObj = {};
@@ -270,7 +277,7 @@ function urlConstructor(order, qString, color, cmc, type, name){
 
 let namesArray = [];
 let uriArray = [];
-
+let storedData = [];
 function fetchCards(apiURL){
   $("#next-results").css("visibility", "hidden");
   $(".searching-text").css("visibility", "visible");
@@ -279,9 +286,16 @@ function fetchCards(apiURL){
       return response.json();
     })
     .then(function(data){
+      console.log(data);
+      console.log(Object.values(data.data));
       for(let i=0; i<data.data.length;i++){
         namesArray.push(data.data[i].name);
+        storedData.push(data.data[i])
       }
+      if(localStorage){
+        localStorage.clear();
+      }
+      storeCardData();
       apiURL = data.next_page;
       if(apiURL != '' && apiURL != null){
         // fetchCards(apiURL);
@@ -320,10 +334,147 @@ function displayError(){
 function populateResults(array){
   for(let i=0;i<array.length;i++){
     let listItem = document.createElement("li");
-    let listAtag = document.createElement("a")
+    let listAtag = document.createElement("a");
+    listAtag.setAttribute("name", array[i]);
     listAtag.textContent = array[i];
     namesListEl.appendChild(listItem);
     listItem.appendChild(listAtag);
+    if(storedData[i].rarity == "uncommon"){
+      listAtag.style.color = "transparent";
+      listAtag.style.textShadow = "1px 1px 1px rgba(192, 192, 192, 0.8), 0 0 0 #222";
+    }
+    if(storedData[i].rarity == "common"){
+      listAtag.style.color = "transparent";
+      listAtag.style.textShadow = "1px 1px 1px rgba(0, 0, 0, 0.8), 0 0 0 #222";
+    }
+    if(storedData[i].rarity == "rare"){
+      listAtag.style.color = "transparent";
+      listAtag.style.textShadow = "1px 1px 1px rgba(255, 215, 0, 0.8), 0 0 0 #222";
+    }
+    if(storedData[i].rarity == "mythic"){
+      listAtag.style.color = "transparent";
+      listAtag.style.textShadow = "1px 1px 1px rgba(255, 0, 0, 0.6), 0 0 0 #222";
+    }
+  }
+
+  function populateBottom(e){
+    console.log(this.name);
+    let retrievedData = JSON.parse(localStorage.getItem(this.name));
+    console.log(retrievedData)
+    $(".card-info-header").text(retrievedData.name);
+    $(".card-info-header").fadeIn();
+    $(".type").text(retrievedData.type_line);
+    $(".type").fadeIn();
+    if(retrievedData.rarity == "uncommon"){
+      $(".card-info-header").css("color", "transparent");
+      $(".card-info-header").css("text-shadow", "1px 1px 1px rgba(192, 192, 192, 0.8), 0 0 0 #222")
+      $(".rarity").css("color", "silver");
+    }
+    if(retrievedData.rarity == "common"){
+      $(".card-info-header").css("color", "transparent");
+      $(".card-info-header").css("text-shadow", "1px 1px 1px rgba(0, 0, 0, 0.8), 0 0 0 #222")
+      $(".rarity").css("color", "black");
+    }
+    if(retrievedData.rarity == "rare"){
+      $(".card-info-header").css("color", "transparent");
+      $(".card-info-header").css("text-shadow", "1px 1px 1px rgba(255, 215, 0, 0.8), 0 0 0 #222")
+      $(".rarity").css("color", "gold");
+    }
+    if(retrievedData.rarity == "mythic"){
+      $(".card-info-header").css("color", "transparent");
+      $(".card-info-header").css("text-shadow", "1px 1px 1px rgba(255, 0, 0, 0.6), 0 0 0 #222")
+      $(".rarity").css("color", "red");
+    }
+    $(".rarity").text(capitalizeFirstLetter(retrievedData.rarity));
+    $(".rarity").fadeIn();
+    if(retrievedData.flavor_text){
+      $(".flavor-text").text(retrievedData.flavor_text);
+      $(".flavor-text").fadeIn();
+    }
+    $(".rarity-text").fadeIn();
+    
+    if(retrievedData.prices.usd ===null){
+      $("#usd").text("USD: N/A");
+    }
+    else{ 
+      $("#usd").text("USD: $ " + (retrievedData.prices.usd));
+    }
+    if(retrievedData.prices.usd_foil ===null){
+      $("#usd-foil").text("USD Foil: N/A");
+    }
+    else{ 
+      $("#usd-foil").text("USD Foil: $ " + (retrievedData.prices.usd_foil));
+    }
+    if(retrievedData.prices.eur ===null){
+      $("#eur").text("EUR: N/A");
+    }
+    else{ 
+      $("#eur").text("EUR: 	\u20AC " + (retrievedData.prices.eur));
+    }
+    if(retrievedData.prices.eur_foil ===null){
+      $("#eur-foil").text("EUR Foil: N/A");
+    }
+    else{ 
+      $("#eur-foil").text("EUR Foil: 	\u20AC " + (retrievedData.prices.eur_foil));
+    }
+    if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
+    $("#cardhoarder").text("Cardhoarder URL: " + retrievedData.purchase_uris.cardhoarder);
+    }
+    if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardmarket){
+    $("#cardmarket").text("Cardmarket URL: " + retrievedData.purchase_uris.cardmarket);
+    }
+    if((retrievedData.purchase_uris) && retrievedData.purchase_uris.tcgplayer){
+    $("#tcgplayer").text("TCGPlayer URL: " + retrievedData.purchase_uris.tcgplayer);
+    }
+    else{
+      $(".retail-container").text("No purchase URL's available.");
+    }
+  
+
+    fetch(retrievedData.image_uris.png)
+      .then(function(response){
+        console.log(response);
+        return response.url;
+      })
+      .then(function(data){
+        $(".card-image").attr("src", data);
+        $(".card-image").fadeIn();
+      })
+
+      fetch(retrievedData.image_uris.small)
+      .then(function(response){
+        console.log(response);
+        return response.url;
+      })
+      .then(function(data){
+        if(!$("#first-small").attr("src")){
+          $("#first-small").attr("src", data);
+          $("#first-small").attr("name", retrievedData.name);
+
+        }
+        console.log($(".small-card").last().attr("name"));
+        if($(".small-card").last().attr("src") != data){
+        let smallCard = document.createElement("img")
+        smallCard.setAttribute("display", "none");
+        smallCard.setAttribute("src", data);
+        smallCard.setAttribute("name", retrievedData.name);
+        smallCard.classList.add("small-card");
+        historyCardContEl.append(smallCard);
+        $(".small-card").fadeIn();
+        }
+      })
+  }
+
+  $("a").on("click",populateBottom);
+
+
+};
+
+
+
+function storeCardData(){
+  for(let i=0; i<storedData.length;i++){
+    localStorage.setItem((storedData[i].name), JSON.stringify(storedData[i]));
   }
 }
 
@@ -339,7 +490,9 @@ function clearResults(){
     namesListEl.removeChild(listItemslist[i]);
   }
 }
-
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
 
 document.getElementById("cmc-search-btn").addEventListener("click", function(event){

@@ -92,14 +92,35 @@
                 <div class="grid-x grid-padding-x">
                     <!-- Currently selected card container -->
                     <div class="large-6 medium-6 cell">
-                        <div class="callout">
+                        <div class="callout current-card">
                             <p>Current card</p>
+                            <div class="card-info-header"></div>
+                            <div class="card-image-container">
+                                <img class="card-image" alt="">
+                            </div>
+                            <div class="flavor-text"></div>
+                            <div class="type"></div>
+                            <div class="rarity-container">
+                                <p class="rarity-text">Rarity: </p>
+                                <div class="rarity"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- Pricing for currently selected card container -->
                     <div class="large-6 medium-6 cell">
-                        <div class="callout">
+                        <div class="callout pricing-wrapper">
                             <p>Pricing</p>
+                            <div class="pricing-container">
+                                <div id="usd"></div>
+                                <div id="usd-foil"></div>
+                                <div id="eur"></div>
+                                <div id="eur-foil"></div>
+                            </div>
+                            <div class="retail-container">
+                                <div class="retail" id="cardhoarder"></div>
+                                <div class="retail" id="cardmarket"></div>
+                                <div class="retail" id="tcgplayer"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -124,6 +145,9 @@
             <div class="large-12 cell">
                 <div class="callout">
                     <p>History - previously selected cards</p>
+                    <div class="history-card-container">
+                        <img id="first-small" class="small-card" alt="">
+                    </div>
                 </div>
             </div>
         </div>
