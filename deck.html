@@ -8,17 +8,12 @@
     <title>MTG Deckbuilder App</title>
     <link rel="stylesheet" href="assets/css/foundation.css">
     <link rel="stylesheet" href="assets/css/app.css">
-    <style>
-        body {
-          background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed; 
-          background-size: 100% 100%;
-        }
-        </style>
+    <link rel="stylesheet" href="assets/css/decklist.css">
+    
+        
 </head>
 
-<body>
+<body id="background">
 
     <!-- Header area -->
     <div class="flex-container align-center">
@@ -31,43 +26,50 @@
      <!-- Decklist container -->
 <div class="flex-container align-left large-12 medium-12 cell">
        
-        <div class=>
+        <div>
             <div class="callout">
-                <h4>Deck Lists</h4>
+                <h3 class="Deck-List">Deck Lists</h4>
                 <p>Deck</p>
                 <p>Deck</p>
             </div>
         </div>
     </div>
 </div>
+<!-- graph and data container -->
 
-    <div class="cell large-10 flex-container align-right">
-   
+    <div id="graph-container" class="cell large-10 flex-container align-right">
         <div class="grid-1 callout">
             <h3>Color Mana Curve</h3>
-            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+            <canvas id="myChart" style="width: 500px;max-width:700px"></canvas>
             </div>
           
-            <div class="grid-2 callout warning">
+            <div class="grid-2 callout">
                 <h3>Total Mana Curve</h3>
-                <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+                <canvas id="myChart2" style="width:500px;max-width:700px"></canvas>
  
             </div>          
             
         </div>
-    </div>    
+    </div>  
+    
+    <div class="gird-margin-x grid-x grid-padding-x align-right">
+            <div id="background" class="cell medium-3 medium-3 margin-5 callout">
+              <h4>Crad Catagory Breakdown</h4>
+              <p class="Deck-List">Non-Land permanent / Lands / Instant & Sorcery</p>
+            </div>
+        </div>  
 
-    <div class="flex-container align-right">
+    <div class="gird-margin-x grid-x grid-padding-x">
         
-            <div class="grid-3 callout">
-              Square 3
+            <div id="background"class="cell medium-3 medium-3 callout">
+              <h4 class="HeaderColor">Price Total</h4>
+              <p class="pricetotal">$</p>
             </div>
-          
-            <div class="grid-4 callout">
-              Square 4
-            </div>
-        </div>
     </div>
+          
+        
+    
+    
         
     
 
@@ -86,6 +88,9 @@
             <div class="large-8 medium-8 cell" id="map"></div>
         </div>
     </div>
+
+
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="assets/js/vendor/jquery.js"></script>
