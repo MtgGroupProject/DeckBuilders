@@ -5,6 +5,35 @@
     padding: 0;
 }
 
+body
+{background-image: url("https://media.istockphoto.com/id/1159376755/photo/flat-lay-composition-with-vintage-carpentry-tools-on-rough-wooden-background-top-view.jpg?s=612x612&w=0&k=20&c=gCzF1Y7lT4ntlDBbcoDMKdAggmDj4VNJeWttcUQHzio=");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: local;
+
+}
+
+.h1bg {
+    text-align: center;
+    font-size: 50px;
+    background: linear-gradient(to left,
+            rgb(3, 0, 3),
+            indigo,
+            blue,
+            green,
+            rgb(255, 115, 0),
+            rgb(255, 0, 0),
+            red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+
+
+.search-section{
+    text-align: center;
+}
+
 .search-names{
 
 }
@@ -13,20 +42,25 @@
     -webkit-animation-duration: 0s !important;
     transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
 } */
+
 p{
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
 }
 a{
     font-size: 24px;
     font-weight: bold;
     color: transparent;
-    text-shadow: 1px 1px 1px rgba(229, 229, 209, 0.8), 0 0 0 #222;
+    text-shadow: 1px 1px 1px rgba(148, 146, 146, 0.8), 0 0 0 rgb(56, 32, 63);
     transition: 0.2s ease-in-out;
 }
 a:hover{
-    color:black;
+    color:rgb(255, 255, 255);
     text-shadow: rgba(229, 229, 209, 0.8), 24px 24px 0;
+}
+h1{
+    text-align: center;
 }
 .card-info-header{
     font-weight: bold;
@@ -58,6 +92,12 @@ a:hover{
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 0;
+}
+.callout{
+    border-radius: 10px;
+}
+.current-card{
+
 }
 .flavor-text{
     font-style: italic;
@@ -137,6 +177,7 @@ a:hover{
 }
 .small-card{
     margin: .125em;
+    cursor: move;
     transition: 0.2s ease-in-out;
 }
 .small-card:hover{
@@ -150,7 +191,55 @@ a:hover{
 }
 .pricing-container{
     width: fit-content;
+    margin-bottom: 2em;
 }
 .pricing-wrapper{
     width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main-search-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.color-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.checkbox-container{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-left: 2em;
+}
+.checkbox, .checkbox-1{
+    margin:auto
+}
+.main-header{
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+}
+.pricing-deck-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+.decklist{
+    max-width: fit-content;
+}
+.container-1{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.purch-link{
+    font-size: 16px;
+    text-decoration: underline;
+}
+.retail{
+    font-weight: bold;
 }
