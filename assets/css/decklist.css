@@ -6,8 +6,26 @@
       background-size: 100% 100%;
       
     }
+h1{
+  color: rgb(17, 240, 9);
+}
+#Decklist{
+  background-image: url('https://preview.redd.it/fr7g5swymhc41.png?width=640&crop=smart&auto=webp&s=930c8edaa0acc0755c71c3d737840d08a9e9a0b0');
+      background-repeat: no-repeat;
+      background-attachment: local; 
+      background-size: 100% 100%;
+      text-align: center;
+      font-family:i;
+}
+#Deck-breakdown{
 
+  background-image: url('https://static.vecteezy.com/system/resources/previews/000/151/563/original/vector-random-numbers-matrix-background.jpg');
+      background-repeat: no-repeat;
+      background-attachment: local; 
+      background-size: 100% 100%;
+      text-align: center;
 
+}
    h4 {
       color: rgb(228, 117, 13);
     }
@@ -17,5 +35,25 @@
     }
 
     .Deck-List{
-      color: rgb(223, 13, 13);
+      color: rgb(13, 223, 206);
+    }
+
+    #Header{
+      background-image:url('https://media.tenor.com/PEDzvMlrdi0AAAAM/fire.gif');
+      background-size:30%;
+      background-repeat: repeat-x;
+      background-attachment: local;
+     
+    }
+
+    #mana-graph{
+      margin: 0px 25px 1rem 0;
+    }
+
+    #total-graph{
+      margin: 0px 25px 1rem 0
+    }
+
+    #NavBar{
+      background-color: black;
     }

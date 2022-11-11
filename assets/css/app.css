@@ -5,6 +5,35 @@
     padding: 0;
 }
 
+body
+{background-image: url("https://media.istockphoto.com/id/1159376755/photo/flat-lay-composition-with-vintage-carpentry-tools-on-rough-wooden-background-top-view.jpg?s=612x612&w=0&k=20&c=gCzF1Y7lT4ntlDBbcoDMKdAggmDj4VNJeWttcUQHzio=");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: local;
+
+}
+
+.h1bg {
+    text-align: center;
+    font-size: 50px;
+    background: linear-gradient(to left,
+            rgb(3, 0, 3),
+            indigo,
+            blue,
+            green,
+            rgb(255, 115, 0),
+            rgb(255, 0, 0),
+            red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+
+
+.search-section{
+    text-align: center;
+}
+
 .search-names{
 
 }

@@ -16,15 +16,19 @@
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
-                <h1>Magic: The Gathering Deckbuilder App</h1>
+                <div class="h1bg">
+                <h1 style="font-family: Comic Sans MS, Comic Sans, cursive ;">Magic: The Gathering Deckbuilder App</h1>
+                </div>
             </div>
         </div>
 
         <div class="grid-x grid-padding-x">
             <!-- Search form container -->
             <div class="large-4 medium-4 cell">
-                <form>
+                <form class="search-section">
                     <h2>Search</h2>
+                    <label>New deck name</label>
+                    <input type="text" placeholder="Deck Name" />
                     <label>Search by card name:</label>
                     <input id="MTG-Input" type="text" placeholder="Card Name" />
                     <label>Search by converted mana cost:</label>
@@ -111,12 +115,16 @@
                 </div>
             </div>
             <!-- Decklist container -->
-            <div class="large-4 medium-4 cell">
-                <div class="callout">
-                    <a href="deck.html">Deck Breakdown</a>
-                    <p>Deck List</p>
-                    <p>Deck List</p>
-                    <p>Deck List</p>
+            <div class="flex-container align-right large-12 medium-12 cell">
+       
+                <div>
+                    <div class="callout">
+                        <h3 class="Deck-List">Deck Lists</h4>
+                            <a href="deck.html">Deck Breakdown</a>
+                        <select class="search-order">
+                            <option value="DragonDeck">Dragon Deck</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,7 +138,7 @@
         </div>
     </div>
 
-
+    <script src="https://kit.fontawesome.com/f20d748b1c.js" crossorigin="anonymous"></script>
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
     <script src="assets/js/vendor/foundation.js"></script>
