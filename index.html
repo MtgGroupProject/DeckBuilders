@@ -25,8 +25,8 @@
         <div class="grid-x grid-padding-x">
             <!-- Search form container -->
             <div class="large-4 medium-4 cell">
-                <form class="search-section">
-                    <h2>Search</h2>
+                <form class="search-section" class="main-search-wrapper">
+                    <h2 class="main-header">Search</h2>
                     <label>New deck name</label>
                     <input type="text" placeholder="Deck Name" />
                     <label>Search by card name:</label>
@@ -34,18 +34,24 @@
                     <label>Search by converted mana cost:</label>
                     <input id="CMC-Input" type="text" placeholder="CMC" />
                     <label>Filter by mana type:</label>
-                    <input type="checkbox" value="colorless" name="Colorless" id="colorless" class="checkbox"></input>
-                    <label for="colorless">Coloroless / ("Speaks for itself")</label>
-                    <input type="checkbox" value="forest" name="Forest" id="forest" class="checkbox-1"></input>
-                    <label for="forest">Forest / Green</label>
-                    <input type="checkbox" value="island" name="Island" id="island" class="checkbox-1"></input>
-                    <label for="island">Island / Blue</label>
-                    <input type="checkbox" value="swamp" name="Swamp" id="swamp" class="checkbox-1"></input>
-                    <label for="swamp">Swamp / Black</label>
-                    <input type="checkbox" value="plains" name="Plains" id="plains" class="checkbox-1"></input>
-                    <label for="plains">Plains / White</label>
-                    <input type="checkbox" value="mountain" name="Mountain" id="mountain" class="checkbox-1"></input>
-                    <label for="mountain">Mountain / Red</label>
+                    <div class="color-wrapper">
+                        <div class="color-category">
+                            <label for="colorless">Coloroless / ("Speaks for itself")</label>
+                            <label for="forest">Forest / Green</label>
+                            <label for="island">Island / Blue</label>
+                            <label for="swamp">Swamp / Black</label>
+                            <label for="plains">Plains / White</label>
+                            <label for="mountain">Mountain / Red</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" value="colorless" name="Colorless" id="colorless" class="checkbox"></input>                       
+                            <input type="checkbox" value="forest" name="Forest" id="forest" class="checkbox-1"></input>                        
+                            <input type="checkbox" value="island" name="Island" id="island" class="checkbox-1"></input>                     
+                            <input type="checkbox" value="swamp" name="Swamp" id="swamp" class="checkbox-1"></input>
+                            <input type="checkbox" value="plains" name="Plains" id="plains" class="checkbox-1"></input>
+                            <input type="checkbox" value="mountain" name="Mountain" id="mountain" class="checkbox-1"></input>
+                        </div>
+                    </div>                                   
                     <label>Order results by:</input>
                     <select class="search-order" disabled>
                         <option value="name">Alphabetical(Default)</option>
@@ -93,17 +99,55 @@
 
         <div class="grid-x grid-padding-x">
             <div class="large-8 medium-8 cell">
-                <div class="grid-x grid-padding-x">
+                <div class="grid-x grid-padding-x container-1">
                     <!-- Currently selected card container -->
                     <div class="large-6 medium-6 cell">
-                        <div class="callout">
+                        <div class="callout current-card">
                             <p>Current card</p>
+                            <div class="card-info-header"></div>
+                            <div class="card-image-container">
+                                <img class="card-image" alt="">
+                            </div>
+                            <div class="flavor-text"></div>
+                            <div class="type"></div>
+                            <div class="rarity-container">
+                                <p class="rarity-text">Rarity: </p>
+                                <div class="rarity"></div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Pricing for currently selected card container -->
-                    <div class="large-6 medium-6 cell">
-                        <div class="callout">
-                            <p>Pricing</p>
+                    <div class="pricing-deck-wrapper">
+                        <!-- Pricing for currently selected card container -->
+                        <div class="large-6 medium-6 cell">
+                            <div class="callout pricing-wrapper">
+                                <p>Pricing</p>
+                                <div class="pricing-container">
+                                    <div id="usd"></div>
+                                    <div id="usd-foil"></div>
+                                    <div id="eur"></div>
+                                    <div id="eur-foil"></div>
+                                </div>
+                                <div class="retail-container">
+                                    <div class="retail" id="cardhoarder">
+                                        <div class="purch-url-container"></div>
+                                    </div>
+                                    <div class="retail" id="cardmarket">
+                                        <div class="purch-url-container"></div>
+                                    </div>
+                                    <div class="retail" id="tcgplayer">
+                                        <div class="purch-url-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                    <!-- Decklist container -->
+                        <div class="large-4 medium-4 cell">
+                            <div class="callout decklist">
+                                <a href="deck.html">Deck Breakdown</a>
+                                <p>Deck List</p>
+                                <p>Deck List</p>
+                                <p>Deck List</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,6 +177,9 @@
             <div class="large-12 cell">
                 <div class="callout">
                     <p>History - previously selected cards</p>
+                    <div class="history-card-container">
+                        <img id="first-small" class="small-card" alt="">
+                    </div>
                 </div>
             </div>
         </div>
