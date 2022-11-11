@@ -17,33 +17,38 @@
 
     <!-- Header area -->
     <div class="flex-container align-center">
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <h1>Magic: The Gathering Deckbuilder App</h1>
+        <div id="Header" class="grid-x grid-padding-x callout">
+            <div class="large-12 cell" >
+                <h1 style="font-family: Comic Sans MS, Comic Sans, cursive;">Magic: The Gathering Deckbuilder App</h1>
+                <ul id="NavBar" class="menu align-center callout">
+                    <li><a href="index.html">Back</a></li>
+                    <li><a href="#">Two</a></li>
+                    <li><a href="#">Three</a></li>
+                    <li><a href="#">Four</a></li>
+                  </ul>
             </div>
         </div>
     </div>
      <!-- Decklist container -->
-<div class="flex-container align-left large-12 medium-12 cell">
+<div id="Decklist"class="card align-left" style="width: 300px; height: 300px; ">
        
-        <div>
-            <div class="callout">
-                <h3 class="Deck-List">Deck Lists</h4>
-                <p>Deck</p>
-                <p>Deck</p>
-            </div>
-        </div>
-    </div>
+    <h3 class="Deck-List">Deck Lists</h3>
+        <select class="search-order">
+            <option value="DragonDeck">Dragon Deck</option>
+        </select>
+</div>
+        
+    
 </div>
 <!-- graph and data container -->
 
-    <div id="graph-container" class="cell large-10 flex-container align-right">
-        <div class="grid-1 callout">
+    <div id="graph-container" class="cell large-10 flex-container align-right ">
+        <div id="mana-graph" class="grid-1 callout">
             <h3>Color Mana Curve</h3>
             <canvas id="myChart" style="width: 500px;max-width:700px"></canvas>
             </div>
           
-            <div class="grid-2 callout">
+            <div id="total-graph"class="grid-2 callout">
                 <h3>Total Mana Curve</h3>
                 <canvas id="myChart2" style="width:500px;max-width:700px"></canvas>
  
@@ -51,17 +56,31 @@
             
         </div>
     </div>  
-    
-    <div class="gird-margin-x grid-x grid-padding-x align-right">
-            <div id="background" class="cell medium-3 medium-3 margin-5 callout">
-              <h4>Crad Catagory Breakdown</h4>
-              <p class="Deck-List">Non-Land permanent / Lands / Instant & Sorcery</p>
+    <!-- Deck Breakdown -->
+    <div class="grid-x grid-padding-x align-center">
+    <div  class="cell small-12 flex-container flex-dir-column large-flex-dir-row"></div>
+            <div id="Deck-breakdown">
+                <div class="cell small-12 align-self-top">
+              <h4>Card Catagory Breakdown</h4>
+            </div>
+              <ul id="Deck-List" class="dropdown menu" data-dropdown-menu>
+                <li class="flex-child-auto">
+                  <a href="#">Perments</a>
+                  <ul class="menu">
+                    <li ><a href="#"></a></li>
+                    <!-- ... -->
+                  </ul>
+                </li>
+                <li class="flex-child-auto"><a href="#">Lands</a></li>
+                <li class="flex-child-auto"><a href="#">Instants / Sorcery</a></li>
+
+              </ul>
             </div>
         </div>  
-
+<!-- total Price -->
     <div class="gird-margin-x grid-x grid-padding-x">
         
-            <div id="background"class="cell medium-3 medium-3 callout">
+            <div class="cell medium-3 medium-3 margin: 100px;">
               <h4 class="HeaderColor">Price Total</h4>
               <p class="pricetotal">$</p>
             </div>
@@ -93,9 +112,9 @@
    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="assets/js/vendor/jquery.js"></script>
-    <script src="assets/js/vendor/what-input.js"></script>
-    <script src="assets/js/vendor/foundation."></script>
+    <script src="./assets/js/vendor/jquery.js"></script>
+    <script src="./assets/js/vendor/what-input.js"></script>
+    <script src="./assets/js/vendor/foundation."></script>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/graph.js"></script>
     <script src="./assets/js/map.js"></script>
