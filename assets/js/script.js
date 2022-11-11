@@ -416,71 +416,107 @@ function populateResults(array){
     else{ 
       $("#eur-foil").text("EUR Foil: 	\u20AC " + (retrievedData.prices.eur_foil));
     }
+    
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
-    $("#cardhoarder").text("Cardhoarder URL: ");
-    let purchATag = document.createElement("a");
-    purchATag.setAttribute("href", retrievedData.purchase_uris.cardhoarder);
-    purchATag.setAttribute("target", "_blank");
-    purchATag.classList.add("purch-link");
-    purchATag.textContent = retrievedData.purchase_uris.cardhoarder;
-    $("#cardhoarder").append(purchATag);
+      console.log(retrievedData.purchase_uris.cardhoarder);
+      $("#cardhoarder").text("Cardhoarder URL: ");
+      let purchATag = document.createElement("a");
+      purchATag.setAttribute("href", retrievedData.purchase_uris.cardhoarder);
+      purchATag.setAttribute("target", "_blank");
+      purchATag.classList.add("purch-link");
+      purchATag.textContent = retrievedData.purchase_uris.cardhoarder;
+      $("#cardhoarder").append(purchATag);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardmarket){
-    $("#cardmarket").text("Cardmarket URL: ");
-    let purchATag2 = document.createElement('a');
-    purchATag2.setAttribute("href", retrievedData.purchase_uris.cardmarket);
-    purchATag2.setAttribute("target", "_blank");
-    purchATag2.classList.add("purch-link");
-    purchATag2.textContent = retrievedData.purchase_uris.cardmarket;
-    $("#cardmarket").append(purchATag2);
+      console.log(retrievedData.purchase_uris.cardmarket);
+      $("#cardmarket").text("Cardmarket URL: ");
+      let purchATag2 = document.createElement('a');
+      purchATag2.setAttribute("href", retrievedData.purchase_uris.cardmarket);
+      purchATag2.setAttribute("target", "_blank");
+      purchATag2.classList.add("purch-link");
+      purchATag2.textContent = retrievedData.purchase_uris.cardmarket;
+      $("#cardmarket").append(purchATag2);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.tcgplayer){
-    $("#tcgplayer").text("TCGPlayer URL: ");
-    let purchATag3 = document.createElement("a");
-    purchATag3.setAttribute("href", retrievedData.purchase_uris.tcgplayer);
-    purchATag3.setAttribute("target", "_blank");
-    purchATag3.classList.add("purch-link");
-    purchATag3.textContent = retrievedData.purchase_uris.tcgplayer;
-    $("#tcgplayer").append(purchATag3);
+      console.log(retrievedData.purchase_uris.tcgplayer);
+      $("#tcgplayer").text("TCGPlayer URL: ");
+      let purchATag3 = document.createElement("a");
+      purchATag3.setAttribute("href", retrievedData.purchase_uris.tcgplayer);
+      purchATag3.setAttribute("target", "_blank");
+      purchATag3.classList.add("purch-link");
+      purchATag3.textContent = retrievedData.purchase_uris.tcgplayer;
+      $("#tcgplayer").append(purchATag3);
     }
-    else{
-      $(".retail-container").text("No purchase URL's available.");
-    }
+    // else{
+    //   $(".retail-container").text("No purchase URL's available.");
+    // }
   
-
-    fetch(retrievedData.image_uris.png)
-      .then(function(response){
-        console.log(response);
-        return response.url;
-      })
-      .then(function(data){
-        $(".card-image").attr("src", data);
-        $(".card-image").fadeIn();
-      })
-
-      fetch(retrievedData.image_uris.small)
-      .then(function(response){
-        console.log(response);
-        return response.url;
-      })
-      .then(function(data){
-        if(!$("#first-small").attr("src")){
-          $("#first-small").attr("src", data);
-          $("#first-small").attr("name", retrievedData.name);
-
-        }
-        console.log($(".small-card").last().attr("name"));
-        if($(".small-card").last().attr("src") != data){
-        let smallCard = document.createElement("img")
-        smallCard.setAttribute("display", "none");
-        smallCard.setAttribute("src", data);
-        smallCard.setAttribute("name", retrievedData.name);
-        smallCard.setAttribute("draggable", "true");
-        smallCard.classList.add("small-card");
-        historyCardContEl.append(smallCard);
-        $(".small-card").fadeIn();
-        }
-      })
+    if(retrievedData.image_uris){
+      fetch(retrievedData.image_uris.png)
+        .then(function(response){
+          console.log(response);
+          return response.url;
+        })
+        .then(function(data){
+          $(".card-image").attr("src", data);
+          $(".card-image").fadeIn();
+        })
+        fetch(retrievedData.image_uris.small)
+        .then(function(response){
+          console.log(response);
+          return response.url;
+        })
+        .then(function(data){
+          if(!$("#first-small").attr("src")){
+            $("#first-small").attr("src", data);
+            $("#first-small").attr("name", retrievedData.name);
+          }
+          console.log($(".small-card").last().attr("name"));
+          if($(".small-card").last().attr("src") != data){
+          let smallCard = document.createElement("img")
+          smallCard.setAttribute("display", "none");
+          smallCard.setAttribute("src", data);
+          smallCard.setAttribute("name", retrievedData.name);
+          smallCard.setAttribute("draggable", "true");
+          smallCard.classList.add("small-card");
+          historyCardContEl.append(smallCard);
+          $(".small-card").fadeIn();
+          }
+        })
+      }
+        if(retrievedData.card_faces){
+          fetch(retrievedData.card_faces[0].image_uris.png)
+          .then(function(response){
+            return response.url;
+          })
+          .then(function(data){
+            $(".card-image").attr("src", data);
+            $(".card-image").fadeIn();
+          })
+          fetch(retrievedData.card_faces[0].small)
+          .then(function(response){
+            console.log(response);
+            return response.url;
+          })
+          .then(function(data){
+            if(!$("#first-small").attr("src")){
+              $("#first-small").attr("src", data);
+              $("#first-small").attr("name", retrievedData.name);
+            }
+            console.log($(".small-card").last().attr("name"));
+            if($(".small-card").last().attr("src") != data){
+            let smallCard = document.createElement("img")
+            smallCard.setAttribute("display", "none");
+            smallCard.setAttribute("src", data);
+            smallCard.setAttribute("name", retrievedData.name);
+            smallCard.setAttribute("draggable", "true");
+            smallCard.classList.add("small-card");
+            historyCardContEl.append(smallCard);
+            $(".small-card").fadeIn();
+            }
+          })
+          }
+      
   }
 
   $("a").on("click",populateBottom);
