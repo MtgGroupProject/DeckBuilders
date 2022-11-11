@@ -1,10 +1,12 @@
 var searchFormEl = document.querySelector('#search-form');
+var map;
+var service;
+var infowindow;
 
 function handleSearchFormSubmit(event) {
   event.preventDefault();
 
   var zipcode = document.querySelector('#zipcode').value;
-
   console.log(zipcode);
 
   if (!zipcode) {
@@ -12,51 +14,76 @@ function handleSearchFormSubmit(event) {
     return;
   }
 
-  var geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zipcode + '&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
   //Geocoding API
+  var geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zipcode + '&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
   fetch(geoUrl)
     .then(function (responseGeo) {
       return responseGeo.json();
     })
     .then(function (dataGeo) {
       console.log(dataGeo);
-      for (var i = 0; i < dataGeo.length; i++) {
-        var latGeo = dataGeo[i].results.geometry.location.lat;
-        var lngGeo = dataGeo[i].results.geometry.location.lng;
-        console.log(latGeo);
-        console.log(lngGeo);
-      }
-      //Places API
-      function getPlaces() {
-        var mapUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=magic:+the+gathering&location=' + latGeo + ',' + lngGeo + '&radius=2000&region=us&type=store&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
+      var latGeo = dataGeo.results[0].geometry.location.lat;
+      var lngGeo = dataGeo.results[0].geometry.location.lng;
 
-        fetch(mapUrl)
-          .then(function (responseMap) {
-            return responseMap.json();
-          })
-          .then(function (dataMap) {
-            console.log(dataMap);
-          });
+      console.log(latGeo);
+      console.log(lngGeo);
+
+      //Find Place from Query
+      function initMap() {
+        var placeInput = new google.maps.LatLng(latGeo, lngGeo);
+      
+        infowindow = new google.maps.InfoWindow();
+      
+        map = new google.maps.Map(
+          document.getElementById('map'), { center: placeInput, zoom: 15 });
+      
+        var request = {
+          query: 'trading card game',
+          fields: ['name', 'geometry'],
+        };
+      
+        var service = new google.maps.places.PlacesService(map);
+      
+        service.findPlaceFromQuery(request, function (results, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+            map.setCenter(results[0].geometry.location);
+          }
+        })
       }
+    initMap();
     });
 }
 
+
+
+
 searchFormEl.addEventListener('click', handleSearchFormSubmit);
 
-// Initialize and add the map and markers for places
-function initMap() {
-  // The location of Uluru
-  const uluru = { lat: -25.344, lng: 131.031 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: uluru,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: uluru,
-    map: map,
-  });
-}
+        // var geoArray = [];
+        // geoArray.push(latGeo);
+        // geoArray.push(lngGeo);
+        // return geoArray;
 
-window.initMap = initMap;
+        //Places API
+        // var mapUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=magic:+the+gathering&location=' + latGeo + ',' + lngGeo + '&radius=2000&region=us&type=store&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
+
+        //     .then(function (array) {
+        //       var mapUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=magic:+the+gathering&location=' + array[0] + ',' + array[1] + '&radius=2000&region=us&type=store&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
+        //       console.log(mapUrl);
+        //       fetch(mapUrl, {
+        //         method: 'GET',
+        //         header: { "Access-Control-Allow-Origin": '*' }
+        //         //   credentials: 'same-origin', // incl,ude, *same-origin, omit
+        //         //   redirect: 'follow' // manual, *follow, error
+        //       })
+        //         .then(function (responseMap) {
+        //           console.log(responseMap);
+        //           return responseMap;
+        //         })
+        //         .then(function (dataMap) {
+        //           console.log(dataMap);
+        //         })
+        //     })
