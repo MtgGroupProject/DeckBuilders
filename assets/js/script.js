@@ -417,13 +417,31 @@ function populateResults(array){
       $("#eur-foil").text("EUR Foil: 	\u20AC " + (retrievedData.prices.eur_foil));
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
-    $("#cardhoarder").text("Cardhoarder URL: " + retrievedData.purchase_uris.cardhoarder);
+    $("#cardhoarder").text("Cardhoarder URL: ");
+    let purchATag = document.createElement("a");
+    purchATag.setAttribute("href", retrievedData.purchase_uris.cardhoarder);
+    purchATag.setAttribute("target", "_blank");
+    purchATag.classList.add("purch-link");
+    purchATag.textContent = retrievedData.purchase_uris.cardhoarder;
+    $("#cardhoarder").append(purchATag);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardmarket){
-    $("#cardmarket").text("Cardmarket URL: " + retrievedData.purchase_uris.cardmarket);
+    $("#cardmarket").text("Cardmarket URL: ");
+    let purchATag2 = document.createElement('a');
+    purchATag2.setAttribute("href", retrievedData.purchase_uris.cardmarket);
+    purchATag2.setAttribute("target", "_blank");
+    purchATag2.classList.add("purch-link");
+    purchATag2.textContent = retrievedData.purchase_uris.cardmarket;
+    $("#cardmarket").append(purchATag2);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.tcgplayer){
-    $("#tcgplayer").text("TCGPlayer URL: " + retrievedData.purchase_uris.tcgplayer);
+    $("#tcgplayer").text("TCGPlayer URL: ");
+    let purchATag3 = document.createElement("a");
+    purchATag3.setAttribute("href", retrievedData.purchase_uris.tcgplayer);
+    purchATag3.setAttribute("target", "_blank");
+    purchATag3.classList.add("purch-link");
+    purchATag3.textContent = retrievedData.purchase_uris.tcgplayer;
+    $("#tcgplayer").append(purchATag3);
     }
     else{
       $(".retail-container").text("No purchase URL's available.");
@@ -457,6 +475,7 @@ function populateResults(array){
         smallCard.setAttribute("display", "none");
         smallCard.setAttribute("src", data);
         smallCard.setAttribute("name", retrievedData.name);
+        smallCard.setAttribute("draggable", "true");
         smallCard.classList.add("small-card");
         historyCardContEl.append(smallCard);
         $(".small-card").fadeIn();
