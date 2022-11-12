@@ -52,6 +52,12 @@ function handleSearchFormSubmit(event) {
     })
 }
 
+// createMarker(){
+//   const marker = new google.maps.Marker({
+//     position: results[i].,
+//     map: map,
+// })
+
 searchFormEl.addEventListener('click', handleSearchFormSubmit);
 
         // var geoArray = [];
