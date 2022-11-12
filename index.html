@@ -25,22 +25,8 @@
         <div class="grid-x grid-padding-x">
             <!-- Search form container -->
             <div class="large-4 medium-4 cell">
-
-                <form class="search-section" class="main-search-wrapper">
+                    <form class="main-search-wrapper">
                     <h2 class="main-header">Search</h2>
-                    <label>New deck name</label>
-                    <input type="text" placeholder="Deck Name" />
-
-
-                <form class="search-section">
-                    <h2>Search</h2>
-                    <label>New deck name</label>
-                    <input type="text" placeholder="Deck Name" />
-
-                <form class="main-search-wrapper">
-                    <h2 class="main-header">Search</h2>
-
-
                     <label>Search by card name:</label>
                     <input id="MTG-Input" type="text" placeholder="Card Name" />
                     <label>Search by converted mana cost:</label>
@@ -109,6 +95,14 @@
             </div>
         </div>
 
+        <div id="Decklist"class="card align-left" style="width: 200px; height: 200px; ">
+            <a href="deck.html">Deck Breakdown</a>
+            <h3 class="Deck-List">Deck Lists</h3>
+                <select class="search-order">
+                <option value="DragonDeck"> Dragon Deck </option>
+              </select>
+        </div>
+
         <div class="grid-x grid-padding-x">
             <div class="large-8 medium-8 cell">
                 <div class="grid-x grid-padding-x container-1">
@@ -152,17 +146,8 @@
                                 </div>
                             </div>
                         </div>
-                                    <!-- Decklist container -->
-                        <div class="large-4 medium-4 cell">
-                            <div class="callout decklist">
-                                <a href="deck.html">Deck Breakdown</a>
-                                <p>Deck List</p>
-                                <p>Deck List</p>
-                                <p>Deck List</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+                       
                 <!-- Data for currently selected card container -->
                 <div class="large-12 cell">
                     <div class="callout">
@@ -172,18 +157,8 @@
             </div>
 
             <!-- Decklist container -->
-            <div class="flex-container align-right large-12 medium-12 cell">
-       
-                <div>
-                    <div class="callout">
-                        <h3 class="Deck-List">Deck Lists</h4>
-                            <a href="deck.html">Deck Breakdown</a>
-                        <select class="search-order">
-                            <option value="DragonDeck">Dragon Deck</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+           
+                    
 
         </div>
         <!-- Previously selected cards container -->
