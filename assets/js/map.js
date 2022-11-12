@@ -1,18 +1,10 @@
 var searchFormEl = document.querySelector('#search-form');
-var map;
-var service;
-var infowindow;
+
 
 function handleSearchFormSubmit(event) {
   event.preventDefault();
 
   var zipcode = document.querySelector('#zipcode').value;
-  console.log(zipcode);
-
-  if (!zipcode) {
-    console.error('You need a search input value!');
-    return;
-  }
 
   //Geocoding API
   var geoUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zipcode + '&key=AIzaSyBQAOk0W2SlKiP_6sSlIBYz_H8XHL-1-DM';
@@ -21,44 +13,50 @@ function handleSearchFormSubmit(event) {
       return responseGeo.json();
     })
     .then(function (dataGeo) {
-      console.log(dataGeo);
       var latGeo = dataGeo.results[0].geometry.location.lat;
       var lngGeo = dataGeo.results[0].geometry.location.lng;
-
       console.log(latGeo);
       console.log(lngGeo);
 
-      //Find Place from Query
-      function initMap() {
+      var map;
+      var service;
+      var infowindow;
+
+      function initialize() {
         var placeInput = new google.maps.LatLng(latGeo, lngGeo);
-      
-        infowindow = new google.maps.InfoWindow();
-      
-        map = new google.maps.Map(
-          document.getElementById('map'), { center: placeInput, zoom: 15 });
-      
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: placeInput,
+          zoom: 15
+        });
+
         var request = {
-          query: 'trading card game',
-          fields: ['name', 'geometry'],
+          location: placeInput,
+          radius: '500',
+          keyword: 'magic: the gathering',
+          type: ['store']
         };
-      
-        var service = new google.maps.places.PlacesService(map);
-      
-        service.findPlaceFromQuery(request, function (results, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-              createMarker(results[i]);
-            }
-            map.setCenter(results[0].geometry.location);
-          }
-        })
+
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
       }
-    initMap();
-    });
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+      initialize();
+    })
 }
 
-
-
+// createMarker(){
+//   const marker = new google.maps.Marker({
+//     position: results[i].,
+//     map: map,
+// })
 
 searchFormEl.addEventListener('click', handleSearchFormSubmit);
 
