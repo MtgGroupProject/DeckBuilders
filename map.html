@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTG Deckbuilder App</title>
     <link rel="stylesheet" href="assets/css/foundation.css">
-    <!-- <link rel="stylesheet" href="assets/css/app.css"> -->
+    <link rel="stylesheet" href="assets/css/map.css">
 </head>
 
 <body>
-    <div class="grid-x grid-padding-x">
+    <header class="grid-x grid-padding-x">
         <div class="large-12 medium-12 cell">
             <h1>MTG Deckbuilder Map</h1>
         </div>
-    </div>
+    </header>
     <div class="grid-x grid-padding-x">
         <!-- Map search form container -->
         <div class="large-4 medium-4 cell">
@@ -23,7 +23,7 @@
             <form id="search-form">
                 <label>Search for nearby stores:</label>
                 <input id='zipcode' type="text" placeholder="enter ZIP code" />
-                <a class="button" class="small-4 small-4 cell">Search</a>
+                <button class="button" class="small-4 small-4 cell">Search</button>
             </form>
         </div>
         <!-- Map container -->
@@ -31,10 +31,10 @@
             <div style="width:100%;height:400px;" id="map"></div>
         </div>
     </div>
-    <div class="grid-x grid-padding-x">
-        <div class="large-12 medium-12 cell"> NAVIGATION
+    <footer class="grid-x grid-padding-x">
+        <div class="large-12 medium-12 cell">
         </div>
-    </div>
+    </footer>
 
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/what-input.js"></script>
