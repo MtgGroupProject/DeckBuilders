@@ -26,11 +26,18 @@
         <!-- Decklist container -->
         <div class="large-2 medium-2 cell">
             <div class="callout">
-                <h3 class="Deck-List">Deck Lists</h4>
-                    <a href="deck.html">Deck Breakdown</a>
+                <h3 class="Deck-List">Deck Builder</h3>
+                <p>Create A Deck</p>
+                <label>New Deck Name:</label>
+                <input id='new-deck' type="text" placeholder="New deck name" />
+                <button class="button" class="small-4 small-4 cell" id="new-deck-btn">Create</button>
+                <p>Your Decks</p>
+                <label>Choose A Deck</label>
                 <select class="deck-list">
                     <option value="DragonDeck">Dragon Deck</option>
                 </select>
+                <p>View Stats</p>
+                <a href="deck.html">Deck Stats</a>
             </div>
         </div>
     </div>
@@ -90,6 +97,8 @@
             <div class="large-9 medium-8 cell">
                 <div class="callout search-results">
                     <div class="search-header">Search Results
+                        <label style="border-radius: 4px;" class="center-text">Search for a card, then click on a result to show data and
+                            pricing information.</label>
                         <div class="order-container">
                             <button class="header-btn btn-order" name="Order"></button>
                         </div>
@@ -172,7 +181,8 @@
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
                 <div class="callout">
-                    <p>History - Previously selected cards</p>
+                    <p>History</p>
+                    <div style="text-align:center; border-radius: 4px; margin: 0.25em;">Click a previously selected card to show stats and pricing information.</div>
                     <div class="history-card-container fade-in">
                         <img id="first-small" class="small-card" alt="">
                     </div>
