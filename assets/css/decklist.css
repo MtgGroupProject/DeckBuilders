@@ -15,7 +15,11 @@ h1{
       background-attachment: local; 
       background-size: 100% 100%;
       text-align: center;
-      font-family:i;
+      width: 300px; 
+      height: 300px;
+      align-content:left;
+      margin-left: 35px;
+      
 }
 #Deck-breakdown{
 
@@ -47,13 +51,160 @@ h1{
     }
 
     #mana-graph{
+      width: 500px;
+      height: 300px;
       margin: 0px 25px 1rem 0;
     }
 
     #total-graph{
+      width: 500px;
+      height: 300px;
       margin: 0px 25px 1rem 0
     }
 
     #NavBar{
       background-color: black;
     }
+
+   
+        
+  
+
+    @media only screen and (max-width: 375px) {
+      h1 {font-size: 20px;
+        align-items: center;
+        width: auto;
+      }
+     a {
+    font-size: 10px;
+
+    }
+      #graph-container{
+       display: flex;
+       flex-wrap: wrap;
+        align-content: center;
+      }
+      #total-graph{
+        height: 225px;
+        width: 350px;
+      }
+      #mana-graph{
+        height: 225px;
+        width: 350px;
+      }
+      #Decklist{
+    width: 250px;
+   text-align: center;
+   align-items: center;
+   }
+
+   #Deck-breakdown{
+    height: 100px;
+    width: 350px;
+
+   }
+        
+    } 
+
+    @media only screen and (max-width: 768px) {
+      h1 {font-size: 40px;
+        align-items: center;
+        width: auto;
+      }
+     a {
+    font-size: 15px;
+
+    }
+      #graph-container{
+       display: flex;
+       flex-wrap: wrap;
+        align-content: center;
+      }
+      #total-graph{
+        height: 225px;
+        width: 350px;
+      }
+      #mana-graph{
+        height: 225px;
+        width: 350px;
+      }
+      #Decklist{
+    width: 250px;
+   text-align: center;
+   align-items: center;
+   }
+
+   #Deck-breakdown{
+    height: 100px;
+    width: 350px;
+
+   }
+  }
+
+   @media only screen and (max-width: 412px) {
+    h1 {font-size: 20px;
+      align-items: center;
+      width: auto;
+    }
+   a {
+  font-size: 10px;
+
+  }
+    #graph-container{
+     display: flex;
+     flex-wrap: wrap;
+      align-content: center;
+    }
+    #total-graph{
+      height: 225px;
+      width: 350px;
+    }
+    #mana-graph{
+      height: 225px;
+      width: 350px;
+    }
+    #Decklist{
+  width: 250px;
+ text-align: center;
+ align-items: center;
+ }
+
+ #Deck-breakdown{
+  height: 100px;
+  width: 350px;
+
+ }
+      
+        
+} 
+
+@media only screen and (max-width: 280px) {
+  h1 {font-size: 10px;
+    align-items: center;
+    width: auto;
+  }
+ a {
+font-size: 10px;
+
+}
+  #graph-container{
+   display: flex;
+   flex-wrap: wrap;
+    align-content: center;
+  }
+  #total-graph{
+    height: 170px;
+    width: 250px;
+  }
+  #mana-graph{
+    height: 170px;
+    width: 250px;
+
+  }
+  #Decklist{
+width: 250px;
+text-align: center;
+
+
+  }
+}
