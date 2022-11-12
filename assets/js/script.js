@@ -376,7 +376,6 @@ function populateResults(array){
 
   function populateBottom(e){
     console.log(this.name);
-    fadeInElements.fadeIn();
     let retrievedData = JSON.parse(localStorage.getItem(this.name));
     console.log(retrievedData)
     $(".card-info-header").text(retrievedData.name);
@@ -439,7 +438,9 @@ function populateResults(array){
     else{ 
       $("#eur-foil").text("EUR Foil: 	\u20AC " + (retrievedData.prices.eur_foil));
     }
-    
+    if(retrievedData.purchase_uris){
+      fadeInElements.fadeIn();
+    }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
       console.log(retrievedData.purchase_uris.cardhoarder);
       cardhoarderEl.attr("href", retrievedData.purchase_uris.cardhoarder);
@@ -523,18 +524,21 @@ function populateResults(array){
           .then(function(data){
             if(!$("#first-small").attr("src")){
               $("#first-small").attr("src", data);
-              $("#first-small").attr("name", retrievedData.name);
+              $("#first-small").attr("name", retrievedData.card_faces[0].name);
+              smallCardArray.push(retrievedData.card_faces[0].name);
             }
             console.log($(".small-card").last().attr("name"));
-            if($(".small-card").last().attr("src") != data){
+            if(!smallCardArray.includes(retrievedData.card_faces[0].name)){
             let smallCard = document.createElement("img")
             smallCard.setAttribute("display", "none");
             smallCard.setAttribute("src", data);
-            smallCard.setAttribute("name", retrievedData.name);
+            smallCard.setAttribute("name", retrievedData.card_faces[0].name);
             smallCard.setAttribute("draggable", "true");
             smallCard.classList.add("small-card");
             historyCardContEl.append(smallCard);
+            smallCardArray.push(retrievedData.card_faces[0].name);
             $(".small-card").fadeIn();
+            $(".small-card").on("click",populateBottom);
             }
           })
           }
@@ -571,6 +575,8 @@ function populateResults(array){
     //   );
     //   infoLegalitiesEl.fadeIn();
     // }
+
+  
   }
   $("a").on("click",populateBottom);
 };
