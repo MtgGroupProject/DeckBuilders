@@ -12,35 +12,43 @@
 
 <body>
 
-    <!-- Header area -->
-    <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <div class="h1bg">
-                <h1 style="font-family: Comic Sans MS, Comic Sans, cursive ;">Magic: The Gathering Deckbuilder App</h1>
-                </div>
+    <div class="deck-aside">
+        <!-- Decklist container -->
+        <div class="large-2 medium-2 cell">
+            <div class="callout decklist">
+                <a href="deck.html">Deck Breakdown</a>
+                <p>Deck List</p>
+                <p>Deck List</p>
+                <p>Deck List</p>
+            </div>
+            <div class="callout">
+                <h3 class="Deck-List">Deck Lists</h4>
+                    <a href="deck.html">Deck Breakdown</a>
+                <select class="deck-list">
+                    <option value="DragonDeck">Dragon Deck</option>
+                </select>
             </div>
         </div>
+    </div>
 
-        <div class="grid-x grid-padding-x">
+    <div class="header-container">
+        <div class="header">
+            <div class="header">
+            <h1 class="header h1bg">DECK BUILDER</h1>
+            <h2 class="header-2">A Magic the Gathering deck building application</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header area -->
+    <div class="grid-container">
+
+
+        <div class="grid-x">
             <!-- Search form container -->
             <div class="large-4 medium-4 cell">
-
-                <form class="search-section" class="main-search-wrapper">
-                    <h2 class="main-header">Search</h2>
-                    <label>New deck name</label>
-                    <input type="text" placeholder="Deck Name" />
-
-
-                <form class="search-section">
-                    <h2>Search</h2>
-                    <label>New deck name</label>
-                    <input type="text" placeholder="Deck Name" />
-
                 <form class="main-search-wrapper">
                     <h2 class="main-header">Search</h2>
-
-
                     <label>Search by card name:</label>
                     <input id="MTG-Input" type="text" placeholder="Card Name" />
                     <label>Search by converted mana cost:</label>
@@ -48,7 +56,7 @@
                     <label>Filter by mana type:</label>
                     <div class="color-wrapper">
                         <div class="color-category">
-                            <label for="colorless">Coloroless / ("Speaks for itself")</label>
+                            <label for="colorless">Coloroless</label>
                             <label for="forest">Forest / Green</label>
                             <label for="island">Island / Blue</label>
                             <label for="swamp">Swamp / Black</label>
@@ -84,13 +92,13 @@
                 </form>
             </div>
             <!-- Search results container -->
-            <div class="large-8 medium-8 cell">
+            <div class="large-9 medium-8 cell">
                 <div class="callout search-results">
                     <div class="search-header">Search Results
                         <div class="order-container">
                             <button class="header-btn btn-order" name="Order"></button>
                         </div>
-                        <div>
+                        <div class="order-btn-container">
                             <button class="header-btn btn-cmc" name="CMC"></button>
                             <button class="header-btn btn-colorless"></button>
                             <button class="header-btn btn-forest"></button>
@@ -108,29 +116,38 @@
                 </div>
             </div>
         </div>
-
-        <div class="grid-x grid-padding-x">
+        <!-- <div class="grid-x grid-padding-x"> -->
             <div class="large-8 medium-8 cell">
                 <div class="grid-x grid-padding-x container-1">
                     <!-- Currently selected card container -->
-                    <div class="large-6 medium-6 cell">
+                    <div class="large-4 medium-6 cell">
                         <div class="callout current-card">
                             <p>Current card</p>
                             <div class="card-info-header"></div>
-                            <div class="card-image-container">
+                            <div class="card-image-container fade-in">
                                 <img class="card-image" alt="">
                             </div>
                             <div class="flavor-text"></div>
                             <div class="type"></div>
-                            <div class="rarity-container">
+                            <div class="rarity-container fade-in">
                                 <p class="rarity-text">Rarity: </p>
                                 <div class="rarity"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="pricing-deck-wrapper">
-                        <!-- Pricing for currently selected card container -->
-                        <div class="large-6 medium-6 cell">
+                    <!-- Pricing for currently selected card container -->
+                    <div class="large-8 medium-6 cell">
+                        <!-- Data for currently selected card container -->
+                        <div class="large-12 cell">
+                            <div class="callout card-information">
+                                <p>Card Information</p>
+                                <div class="info-power"></div>
+                                <div class="info-toughness"></div>
+                                <div class="info-mana-cost"></div>
+                                <div class="info-cmc"></div>
+                                <div class="info-oracle"></div>
+                                <div class="info-legalities"></div>
+                            </div>
                             <div class="callout pricing-wrapper">
                                 <p>Pricing</p>
                                 <div class="pricing-container">
@@ -139,59 +156,26 @@
                                     <div id="eur"></div>
                                     <div id="eur-foil"></div>
                                 </div>
-                                <div class="retail-container">
-                                    <div class="retail" id="cardhoarder">
-                                        <div class="purch-url-container"></div>
+                                <div class="retail-container fade-in">
+                                    <div class="retail fade-in" id="cardhoarder">
                                     </div>
-                                    <div class="retail" id="cardmarket">
-                                        <div class="purch-url-container"></div>
+                                    <div class="retail fade-in" id="cardmarket">
                                     </div>
-                                    <div class="retail" id="tcgplayer">
-                                        <div class="purch-url-container"></div>
+                                    <div class="retail fade-in" id="tcgplayer">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                                    <!-- Decklist container -->
-                        <div class="large-4 medium-4 cell">
-                            <div class="callout decklist">
-                                <a href="deck.html">Deck Breakdown</a>
-                                <p>Deck List</p>
-                                <p>Deck List</p>
-                                <p>Deck List</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Data for currently selected card container -->
-                <div class="large-12 cell">
-                    <div class="callout">
-                        <p>Data</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Decklist container -->
-            <div class="flex-container align-right large-12 medium-12 cell">
-       
-                <div>
-                    <div class="callout">
-                        <h3 class="Deck-List">Deck Lists</h4>
-                            <a href="deck.html">Deck Breakdown</a>
-                        <select class="search-order">
-                            <option value="DragonDeck">Dragon Deck</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <!-- </div> -->
         <!-- Previously selected cards container -->
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
                 <div class="callout">
-                    <p>History - previously selected cards</p>
-                    <div class="history-card-container">
+                    <p>History - Previously selected cards</p>
+                    <div class="history-card-container fade-in">
                         <img id="first-small" class="small-card" alt="">
                     </div>
                 </div>

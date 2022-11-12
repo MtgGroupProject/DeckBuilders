@@ -6,16 +6,14 @@
 }
 
 body
-{background-image: url("https://media.istockphoto.com/id/1159376755/photo/flat-lay-composition-with-vintage-carpentry-tools-on-rough-wooden-background-top-view.jpg?s=612x612&w=0&k=20&c=gCzF1Y7lT4ntlDBbcoDMKdAggmDj4VNJeWttcUQHzio=");
+{      background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
     background-repeat: no-repeat;
+    background-attachment: fixed; 
     background-size: 100% 100%;
-    background-position: local;
 
 }
 
 .h1bg {
-    text-align: center;
-    font-size: 50px;
     background: linear-gradient(to left,
             rgb(3, 0, 3),
             indigo,
@@ -29,13 +27,12 @@ body
         }
 
 
-
 .search-section{
     text-align: center;
 }
 
 .search-names{
-
+    background-color: transparent;
 }
 /* body.preload *{
     animation-duration: 0s !important;
@@ -43,25 +40,85 @@ body
     transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
 } */
 
+*{
+    background-color: rgba(0, 0, 0, 0.553);
+    outline-color: rgb(255, 255, 255);
+    color: aliceblue;
+}
+body{
+    position: relative;
+    background-color: azure;
+}
 p{
     font-weight: bold;
     font-size: 20px;
     text-align: center;
+    padding: 0 .25em;
 }
 a{
     font-size: 24px;
     font-weight: bold;
     color: transparent;
-    text-shadow: 1px 1px 1px rgba(148, 146, 146, 0.8), 0 0 0 rgb(56, 32, 63);
+    text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.8), 0 0 0 rgb(56, 32, 63);
     transition: 0.2s ease-in-out;
 }
 a:hover{
-    color:rgb(255, 255, 255);
-    text-shadow: rgba(229, 229, 209, 0.8), 24px 24px 0;
+    color:rgb(245, 236, 219);
+    text-shadow: rgba(244, 238, 214, 0.8), 24px 24px 0;
 }
 h1{
     text-align: center;
 }
+div{
+    padding: 0.25em;
+    border-radius: 10px;
+}
+li{
+    background-color: azure;
+}
+li, p{
+    border: 1px solid azure;
+    border-radius: 5px;
+    margin: 0.2em;
+}
+.header-container{
+    background-color: transparent;
+    margin-bottom: 10rem;
+}
+.header{
+    /* background-color: transparent; */
+    font-weight: bold;
+    font-size: 120px;
+    margin-bottom: 2rem;
+}
+.header-2{
+    background-color: transparent;
+    color: transparent;
+    text-shadow: 1px 1px 1px rgba(253, 250, 237, 0.8), 0 0 0 #222;
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+#usd,#usd-foil,#eur,#eur-foil{
+    margin: 0.25em;
+    display: none;
+}
+.grid-container{
+    border-radius: 10px;
+    max-width: 85rem;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px azure;
+    border-radius: 10px;
+  }
+::-webkit-scrollbar {
+    background-color: #000;
+  }
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: azure;
+    border-radius: 10px;
+  }
 .card-info-header{
     font-weight: bold;
     font-size: 24px;
@@ -69,8 +126,15 @@ h1{
     text-shadow: 1px 1px 1px rgba(229, 229, 209, 0.8), 0 0 0 #222;
     border-bottom: #222 solid 1px;
     margin-bottom: 0.1em;
-    text-align: left;
+    text-align: center;
     text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.4), 0 0 0 #222;
+}
+.card-information{
+    width: 100%;
+}
+.color-category{
+    background-color: azure;
+    flex-grow: 1;
 }
 .card-image{
     border-top: #222 solid 1px;
@@ -84,9 +148,13 @@ h1{
     margin-top: 0.5em;
 }
 .rarity{
+    display: flex;
     font-size: 30px;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    margin-left: 1em;
+    text-shadow: -1px -1px 0 azure, 1px -1px 0 azure, -1px 1px 0 azure, 1px 1px 0 azure;
+    height: 1.5em;
+    text-align: center;
+    align-items: center;
+    padding-top: 0;
 }
 .rarity-text{
     font-weight: bold;
@@ -95,9 +163,36 @@ h1{
 }
 .callout{
     border-radius: 10px;
+    background-color: azure;
+    margin: .5em;
 }
 .current-card{
-
+    /* width: 65%; */
+}
+.deck-aside{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    margin: 0;
+    padding: 0;
+    left: 90%;
+    position: sticky;
+    top: 30%;
+    z-index: 1000;
+}
+.large-2.medium-2.cell{
+    width: 15em;
+}
+.grid-x.grid-padding-x{
+    align-items: center;
+    justify-content: center;
+}
+.grid-x{
+    flex-grow: 1;
+}
+.large-4.medium-4.cell{
+    width: 20%;
+    background-color: aliceblue;
 }
 .flavor-text{
     font-style: italic;
@@ -117,10 +212,11 @@ h1{
     text-align: center;
     font-size: 20px;
     top: 0;
-    background-color: lightgray;
+    background-color: #222;
     position: sticky;
     overflow: hidden;
     padding: 0.25em;
+    color: azure;
 }
 .header-btn{
     border:none;
@@ -135,6 +231,7 @@ h1{
 .order-container{
     display: flex;
     justify-content: center;
+    background-color: transparent;
 }
 .btn-cmc{
     background-color: lightcoral;
@@ -170,9 +267,11 @@ h1{
     display: none;  
 }
 .names-list{
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
     list-style: none;
 }
-.flavor-text, .card-info-header, .rarity-text, .rarity, .type{
+.flavor-text, .card-info-header, .rarity-text, .rarity, .type, .info-power, .info-toughness, .info-mana-cost, .info-cmc, .info-oracle, .info-legalities{
     display: none;
 }
 .small-card{
@@ -181,20 +280,34 @@ h1{
     transition: 0.2s ease-in-out;
 }
 .small-card:hover{
-    transform: scale(125%);
+    transform: scale(90%);
 }
 #first-small{
     margin: -.125em;
 }
+.large-12.cell{
+    align-items: center;
+}
 .retail{
-    width: fit-content;
+    width: 100%;
+    word-wrap: break-word;
+    margin: 0.25em;
+    text-align: center;
+}
+.retail-container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
 }
 .pricing-container{
     width: fit-content;
     margin-bottom: 2em;
+    display: none;
 }
 .pricing-wrapper{
-    width: fit-content;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -203,6 +316,16 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: baseline;
+}
+/* .large-8.medium-6.cell{
+width: fit-content;
+}
+.grid-x.grid-padding.container-1{
+    display: flex;
+    flex-direction: row;
+} */
+.large-9.medium-8.cell{
+    width: 80%;
 }
 .color-wrapper{
     width: 100%;
@@ -234,7 +357,7 @@ h1{
 .container-1{
     display: flex;
     flex-direction: row;
-    flex-grow: 1;
+    flex-grow: 0;
 }
 .purch-link{
     font-size: 16px;
@@ -242,4 +365,23 @@ h1{
 }
 .retail{
     font-weight: bold;
+}
+.info-power,.info-toughness,.info-mana-cost,.info-cmc,.info-oracle{
+    margin: 0.25em;
+}
+label{
+    background-color: azure;
+    border-radius: 0 3px 3px 0;
+}
+select, input{
+    border-radius: 10px;
+}
+.order-btn-container{
+    background-color: transparent;
+}
+#cmc-search-btn{
+    border-radius: 4px;
+}
+.fade-in{
+    display: none;
 }

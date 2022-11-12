@@ -47,7 +47,19 @@ const cmcHeaderBtn = $(".btn-cmc");
 const orderHeaderBtn = $(".btn-order");
 const currentCardEl = $(".current-card");
 const historyCardContEl = $(".history-card-container");
-
+const cardInfoEl = $(".card-information");
+const infoPowerEl = $(".info-power");
+const infoToughEl = $(".info-toughness")
+const infoManaCostEl = $(".info-mana-cost");
+const infoCMCEl = $(".info-cmc");
+const infoOracleEl = $(".info-oracle");
+const infoLegalitiesEl = $(".info-legalities")
+const pricingContainerEl = $(".pricing-container");
+const usdEl = $("#usd")
+const usdFoilEl = $("#usd-foil");
+const eurEl = $("#eur");
+const eurFoilEl = $("#eur-foil");
+const fadeInElements = $(".fade-in");
 
 // setTimeout(function(){
 //   document.body.className="preload";
@@ -335,6 +347,7 @@ function populateResults(array){
     let listItem = document.createElement("li");
     let listAtag = document.createElement("a");
     listAtag.setAttribute("name", array[i].name);
+    listAtag.classList.add("search-result-card");
     listAtag.textContent = array[i].name;
     namesListEl.appendChild(listItem);
     listItem.appendChild(listAtag);
@@ -358,6 +371,7 @@ function populateResults(array){
 
   function populateBottom(e){
     console.log(this.name);
+    fadeInElements.fadeIn();
     let retrievedData = JSON.parse(localStorage.getItem(this.name));
     console.log(retrievedData)
     $(".card-info-header").text(retrievedData.name);
@@ -391,7 +405,11 @@ function populateResults(array){
       $(".flavor-text").fadeIn();
     }
     $(".rarity-text").fadeIn();
-    
+    pricingContainerEl.fadeIn();
+    usdEl.fadeIn();
+    usdFoilEl.fadeIn();
+    eurEl.fadeIn();
+    eurFoilEl.fadeIn();
     if(retrievedData.prices.usd ===null){
       $("#usd").text("USD: N/A");
     }
@@ -419,32 +437,29 @@ function populateResults(array){
     
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
       console.log(retrievedData.purchase_uris.cardhoarder);
-      $("#cardhoarder").text("Cardhoarder URL: ");
       let purchATag = document.createElement("a");
       purchATag.setAttribute("href", retrievedData.purchase_uris.cardhoarder);
       purchATag.setAttribute("target", "_blank");
       purchATag.classList.add("purch-link");
-      purchATag.textContent = retrievedData.purchase_uris.cardhoarder;
+      purchATag.textContent = "Cardhoarder"
       $("#cardhoarder").append(purchATag);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardmarket){
       console.log(retrievedData.purchase_uris.cardmarket);
-      $("#cardmarket").text("Cardmarket URL: ");
       let purchATag2 = document.createElement('a');
       purchATag2.setAttribute("href", retrievedData.purchase_uris.cardmarket);
       purchATag2.setAttribute("target", "_blank");
       purchATag2.classList.add("purch-link");
-      purchATag2.textContent = retrievedData.purchase_uris.cardmarket;
+      purchATag2.textContent = "Cardmarket";
       $("#cardmarket").append(purchATag2);
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.tcgplayer){
       console.log(retrievedData.purchase_uris.tcgplayer);
-      $("#tcgplayer").text("TCGPlayer URL: ");
       let purchATag3 = document.createElement("a");
       purchATag3.setAttribute("href", retrievedData.purchase_uris.tcgplayer);
       purchATag3.setAttribute("target", "_blank");
       purchATag3.classList.add("purch-link");
-      purchATag3.textContent = retrievedData.purchase_uris.tcgplayer;
+      purchATag3.textContent = "TCGPlayer";
       $("#tcgplayer").append(purchATag3);
     }
     // else{
@@ -493,7 +508,7 @@ function populateResults(array){
             $(".card-image").attr("src", data);
             $(".card-image").fadeIn();
           })
-          fetch(retrievedData.card_faces[0].small)
+          fetch(retrievedData.card_faces[0].image_uris.small)
           .then(function(response){
             console.log(response);
             return response.url;
@@ -516,12 +531,41 @@ function populateResults(array){
             }
           })
           }
-      
+    //Appending/populating Card Info data into the Card Information Div.
+    if(retrievedData.power){
+      infoPowerEl.text("Power: " + retrievedData.power);
+      infoPowerEl.fadeIn();
+    }
+    if(retrievedData.toughness){
+      infoToughEl.text("Toughness: " + retrievedData.toughness);
+      infoToughEl.fadeIn();
+    }
+    if(retrievedData.mana_cost){
+      infoManaCostEl.text("Mana Cost: "+ retrievedData.mana_cost);
+      infoManaCostEl.fadeIn();
+    }
+    if(retrievedData.cmc){
+      infoCMCEl.text("Converted Mana Cost: " + retrievedData.cmc);
+      infoCMCEl.fadeIn();
+    }
+    if(retrievedData.oracle_text){
+      infoOracleEl.text("Oracle Text: " + retrievedData.oracle_text);
+      infoOracleEl.fadeIn();
+    }
+    // if(retrievedData.legalities){
+    //   infoLegalitiesEl.text(
+    //     "Alchemy: " + retrievedData.legalities.alchemy +
+    //     "\n Brawl: " + retrievedData.legalities.brawl +
+    //     "\n Commander: " + retrievedData.legalities.commander +
+    //     "\n Duel: " + retrievedData.legalities.duel +
+    //     "\n Explorer: " + retrievedData.legalities.explorer +
+    //     "\n future: " + retrievedData.legalities.future
+
+    //   );
+    //   infoLegalitiesEl.fadeIn();
+    // }
   }
-
   $("a").on("click",populateBottom);
-
-
 };
 
 
@@ -537,7 +581,7 @@ const searchNamesEl = $(".search-names");
 
 
 function clearResults(){
-  let listItems = document.querySelectorAll("a");
+  let listItems = document.querySelectorAll(".search-result-card");
   let listItemslist = document.querySelectorAll("li");
   for(let i=0;i<storedData.length;i++){
     listItemslist[i].removeChild(listItems[i]);
