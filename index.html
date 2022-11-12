@@ -11,34 +11,34 @@
 </head>
 
 <body>
-
-
-
+    <!-- Header area -->
     <div class="header-container">
         <div class="header">
-            <div class="header">
             <h1 class="header h1bg">DECK BUILDER</h1>
-            <h2 class="header-2">A Magic the Gathering deck building application</h2>
-            </div>
+            <h2 class="header-2">A Magic: The Gathering Deck Building Application</h2>
         </div>
     </div>
     <div class="deck-aside">
         <!-- Decklist container -->
         <div class="large-2 medium-2 cell">
             <div class="callout">
-                <h3 class="Deck-List">Deck Lists</h4>
-                    <a href="deck.html">Deck Breakdown</a>
+                <h3 class="Deck-List">Deck Builder</h3>
+                <p>Create A Deck</p>
+                <label>New Deck Name:</label>
+                <input id='new-deck' type="text" placeholder="New deck name" />
+                <button class="button" class="small-4 small-4 cell" id="new-deck-btn">Create</button>
+                <p>Your Decks</p>
+                <label>Choose A Deck</label>
                 <select class="deck-list">
                     <option value="DragonDeck">Dragon Deck</option>
                 </select>
+                <p>View Stats</p>
+                <a href="deck.html">Deck Stats</a>
             </div>
         </div>
     </div>
 
-    <!-- Header area -->
     <div class="grid-container">
-
-
         <div class="grid-x">
             <!-- Search form container -->
             <div class="large-4 medium-4 cell">
@@ -59,38 +59,42 @@
                             <label for="mountain">Mountain / Red</label>
                         </div>
                         <div class="checkbox-container">
-                            <input type="checkbox" value="colorless" name="Colorless" id="colorless" class="checkbox"></input>                       
-                            <input type="checkbox" value="forest" name="Forest" id="forest" class="checkbox-1"></input>                        
-                            <input type="checkbox" value="island" name="Island" id="island" class="checkbox-1"></input>                     
+                            <input type="checkbox" value="colorless" name="Colorless" id="colorless"
+                                class="checkbox"></input>
+                            <input type="checkbox" value="forest" name="Forest" id="forest" class="checkbox-1"></input>
+                            <input type="checkbox" value="island" name="Island" id="island" class="checkbox-1"></input>
                             <input type="checkbox" value="swamp" name="Swamp" id="swamp" class="checkbox-1"></input>
                             <input type="checkbox" value="plains" name="Plains" id="plains" class="checkbox-1"></input>
-                            <input type="checkbox" value="mountain" name="Mountain" id="mountain" class="checkbox-1"></input>
+                            <input type="checkbox" value="mountain" name="Mountain" id="mountain"
+                                class="checkbox-1"></input>
                         </div>
-                    </div>                                   
+                    </div>
                     <label>Order results by:</input>
-                    <select class="search-order" disabled>
-                        <option value="name">Alphabetical(Default)</option>
-                        <option value="set">Set</option>
-                        <option value="released">Date Released</option>
-                        <option value="rarity">Rarity</option>
-                        <option value="usd">USD ($)</option>
-                        <option value="tix">TIX Price</option>
-                        <option value="eur">Euro (&euro;)</option>
-                        <option value="power">Power</option>
-                        <option value="toughness">Toughness</option>
-                        <option value="edhrec">EDHREC Ranking</option>
-                        <option value="penny">Penny Dreadful Ranking</option>
-                        <option value="artist">Front-side Artist Name</option>
-                        <option value="review">Review(Power/Popularity)</option>
-                    </select>
-                    <button class="button" class="small-4 small-4 cell" id="cmc-search-btn">Search</button>
+                        <select class="search-order" disabled>
+                            <option value="name">Alphabetical(Default)</option>
+                            <option value="set">Set</option>
+                            <option value="released">Date Released</option>
+                            <option value="rarity">Rarity</option>
+                            <option value="usd">USD ($)</option>
+                            <option value="tix">TIX Price</option>
+                            <option value="eur">Euro (&euro;)</option>
+                            <option value="power">Power</option>
+                            <option value="toughness">Toughness</option>
+                            <option value="edhrec">EDHREC Ranking</option>
+                            <option value="penny">Penny Dreadful Ranking</option>
+                            <option value="artist">Front-side Artist Name</option>
+                            <option value="review">Review(Power/Popularity)</option>
+                        </select>
+                        <button class="button" class="small-4 small-4 cell" id="cmc-search-btn">Search</button>
                 </form>
             </div>
             <!-- Search results container -->
-            <div class="large-9 medium-8 cell">
+            <div class="large-8 medium-8 cell">
                 <div class="callout search-results">
                     <div class="search-header">Search Results
                         <div class="order-container">
+                            <label class="center-text">Search for a card, then click on a result to show data and
+                                pricing information.</label>
                             <button class="header-btn btn-order" name="Order"></button>
                         </div>
                         <div class="order-btn-container">
@@ -106,73 +110,75 @@
                     <p style="visibility: hidden;" class="searching-text">Searching...</p>
                     <div class="search-names">
                         <ul class="names-list"></ul>
-                        <button class="button" class="small-4 small-4 cell" id="next-results" style="visibility: hidden;">Next Page</button>
+                        <button class="button" class="small-4 small-4 cell" id="next-results"
+                            style="visibility: hidden;">Next Page</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- <div class="grid-x grid-padding-x"> -->
-            <div class="large-8 medium-8 cell">
-                <div class="grid-x grid-padding-x container-1">
-                    <!-- Currently selected card container -->
-                    <div class="large-4 medium-6 cell">
-                        <div class="callout current-card">
-                            <p>Current card</p>
-                            <div class="card-info-header"></div>
-                            <div class="card-image-container fade-in">
-                                <img class="card-image" alt="">
-                            </div>
-                            <div class="flavor-text"></div>
-                            <div class="type"></div>
-                            <div class="rarity-container fade-in">
-                                <p class="rarity-text">Rarity: </p>
-                                <div class="rarity"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Pricing for currently selected card container -->
-                    <div class="large-8 medium-6 cell">
-                        <!-- Data for currently selected card container -->
-                        <div class="large-12 cell">
-                            <div class="callout card-information">
-                                <p>Card Information</p>
-                                <div class="info-power"></div>
-                                <div class="info-toughness"></div>
-                                <div class="info-mana-cost"></div>
-                                <div class="info-cmc"></div>
-                                <div class="info-oracle"></div>
-                                <div class="info-legalities"></div>
-                            </div>
-                            <div class="callout pricing-wrapper">
-                                <p>Pricing</p>
-                                <div class="pricing-container">
-                                    <div id="usd"></div>
-                                    <div id="usd-foil"></div>
-                                    <div id="eur"></div>
-                                    <div id="eur-foil"></div>
+        <div class="large-8 medium-8 cell">
+            <div class="grid-x grid-padding-x container-1">
+                <!-- Currently selected card container -->
+                <div class="large-4 medium-6 cell">
+                    <div class="callout current-card">
+                        <p>Current Card</p>
+                                <div class="card-info-header"></div>
+                                <div class="card-image-container fade-in">
+                                    <img class="card-image" alt="">
                                 </div>
-                                <div class="retail-container fade-in">
-                                    <div class="retail fade-in" id="cardhoarder">
-                                        <a class="cardhoarder"></a>
-                                    </div>
-                                    <div class="retail fade-in" id="cardmarket">
-                                        <a class="cardmarket"></a>
-                                    </div>
-                                    <div class="retail fade-in" id="tcgplayer">
-                                        <a class="tcgplayer"></a>
-                                    </div>
+                                <div class="flavor-text"></div>
+                                <div class="type"></div>
+                                <div class="rarity-container fade-in">
+                                    <p class="rarity-text">Rarity: </p>
+                                    <div class="rarity"></div>
+                                </div>
+                    </div>
+                </div>
+                <!-- Pricing for currently selected card container -->
+                <div class="large-8 medium-6 cell">
+                    <!-- Data for currently selected card container -->
+                    <div class="large-12 cell">
+                        <div class="callout card-information">
+                            <p>Card Stats</p>
+                            <div class="info-power"></div>
+                            <div class="info-toughness"></div>
+                            <div class="info-mana-cost"></div>
+                            <div class="info-cmc"></div>
+                            <div class="info-oracle"></div>
+                            <div class="info-legalities"></div>
+                        </div>
+                        <div class="callout pricing-wrapper">
+                            <p>Pricing</p>
+                            <div class="pricing-container">
+                                <div id="usd"></div>
+                                <div id="usd-foil"></div>
+                                <div id="eur"></div>
+                                <div id="eur-foil"></div>
+                            </div>
+                            <div class="retail-container fade-in">
+                                <div class="retail fade-in" id="cardhoarder">
+                                    <a class="cardhoarder"></a>
+                                </div>
+                                <div class="retail fade-in" id="cardmarket">
+                                    <a class="cardmarket"></a>
+                                </div>
+                                <div class="retail fade-in" id="tcgplayer">
+                                    <a class="tcgplayer"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         <!-- </div> -->
         <!-- Previously selected cards container -->
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
                 <div class="callout">
-                    <p>History - Previously selected cards</p>
+                    <p>History</p>
+                    <label>Click a previously selected card to show stats and pricing information.</label>
                     <div class="history-card-container fade-in">
                         <img id="first-small" class="small-card" alt="">
                     </div>
