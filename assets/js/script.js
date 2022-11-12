@@ -60,6 +60,9 @@ const usdFoilEl = $("#usd-foil");
 const eurEl = $("#eur");
 const eurFoilEl = $("#eur-foil");
 const fadeInElements = $(".fade-in");
+const cardhoarderEl = $(".cardhoarder");
+const cardmarketEl = $(".cardmarket");
+const tcgplayerEl = $(".tcgplayer")
 
 // setTimeout(function(){
 //   document.body.className="preload";
@@ -290,9 +293,11 @@ function urlConstructor(order, qString, color, cmc, type, name){
 let namesArray = [];
 let uriArray = [];
 let storedData = [];
+let smallCardArray = []
 function fetchCards(apiURL){
   $("#next-results").css("visibility", "hidden");
   $(".searching-text").css("visibility", "visible");
+  $(".searching-text").text("Searching...");
   fetch(apiURL)  
     .then(function (response) {
       return response.json();
@@ -338,8 +343,8 @@ $("#next-results").click(function(){
 })
 
 function displayError(){
-  searchNamesEl.text("No results found.");
-  $(".searching-text").css("visibility", "hidden");
+  // searchNamesEl.text("No results found.");
+  $(".searching-text").text("No results found.")
 }
 
 function populateResults(array){
@@ -437,30 +442,27 @@ function populateResults(array){
     
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardhoarder){
       console.log(retrievedData.purchase_uris.cardhoarder);
-      let purchATag = document.createElement("a");
-      purchATag.setAttribute("href", retrievedData.purchase_uris.cardhoarder);
-      purchATag.setAttribute("target", "_blank");
-      purchATag.classList.add("purch-link");
-      purchATag.textContent = "Cardhoarder"
-      $("#cardhoarder").append(purchATag);
+      cardhoarderEl.attr("href", retrievedData.purchase_uris.cardhoarder);
+      cardhoarderEl.attr("target", "_blank");
+      cardhoarderEl.addClass("purch-link");
+      cardhoarderEl.text("Cardhoarder")
+      cardhoarderEl.fadeIn();
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.cardmarket){
       console.log(retrievedData.purchase_uris.cardmarket);
-      let purchATag2 = document.createElement('a');
-      purchATag2.setAttribute("href", retrievedData.purchase_uris.cardmarket);
-      purchATag2.setAttribute("target", "_blank");
-      purchATag2.classList.add("purch-link");
-      purchATag2.textContent = "Cardmarket";
-      $("#cardmarket").append(purchATag2);
+      cardmarketEl.attr("href", retrievedData.purchase_uris.cardmarket);
+      cardmarketEl.attr("target", "_blank");
+      cardmarketEl.addClass("purch-link");
+      cardmarketEl.text("Cardmarket")
+      cardmarketEl.fadeIn();
     }
     if((retrievedData.purchase_uris) && retrievedData.purchase_uris.tcgplayer){
       console.log(retrievedData.purchase_uris.tcgplayer);
-      let purchATag3 = document.createElement("a");
-      purchATag3.setAttribute("href", retrievedData.purchase_uris.tcgplayer);
-      purchATag3.setAttribute("target", "_blank");
-      purchATag3.classList.add("purch-link");
-      purchATag3.textContent = "TCGPlayer";
-      $("#tcgplayer").append(purchATag3);
+      tcgplayerEl.attr("href", retrievedData.purchase_uris.tcgplayer);
+      tcgplayerEl.attr("target", "_blank");
+      tcgplayerEl.addClass("purch-link");
+      tcgplayerEl.text("TCGPlayer");
+      tcgplayerEl.fadeIn();
     }
     // else{
     //   $(".retail-container").text("No purchase URL's available.");
@@ -485,9 +487,11 @@ function populateResults(array){
           if(!$("#first-small").attr("src")){
             $("#first-small").attr("src", data);
             $("#first-small").attr("name", retrievedData.name);
+            smallCardArray.push(retrievedData.name);
+            console.log(smallCardArray);
           }
           console.log($(".small-card").last().attr("name"));
-          if($(".small-card").last().attr("src") != data){
+          if(!smallCardArray.includes(retrievedData.name)){
           let smallCard = document.createElement("img")
           smallCard.setAttribute("display", "none");
           smallCard.setAttribute("src", data);
@@ -495,7 +499,10 @@ function populateResults(array){
           smallCard.setAttribute("draggable", "true");
           smallCard.classList.add("small-card");
           historyCardContEl.append(smallCard);
+          smallCardArray.push(retrievedData.name);
           $(".small-card").fadeIn();
+          $(".small-card").on("click",populateBottom);
+          console.log(smallCardArray)
           }
         })
       }
@@ -567,8 +574,6 @@ function populateResults(array){
   }
   $("a").on("click",populateBottom);
 };
-
-
 
 function storeCardData(){
   for(let i=0; i<storedData.length;i++){
