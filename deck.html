@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="assets/css/foundation.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/css/decklist.css">
-    
-        
 </head>
 
 <body id="background">
@@ -19,64 +17,70 @@
     <div class="flex-container align-center">
         <div id="Header" class="grid-x grid-padding-x">
             <div class="large-12 cell" >
-                <h1 style="font-family: Comic Sans MS, Comic Sans, cursive;">Magic: The Gathering Deckbuilder App</h1>
+                <h1 style="font-family: Comic Sans MS, Comic Sans, cursive;">Magic: The Gathering Deckbuilder Application</h1>
                 <h2 style="font-family: Comic Sans MS, Comic Sans, cursive;"> Deck Breakdown</h2>
                 <ul id="NavBar" class="menu align-center row">
-                    <li><a href="index.html">Deck Builder</a></li>
-                    <li><a href="#map.html">Store Locator</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-     <!-- Decklist container -->
-<div id="Decklist" class="card">
-       
-    <h3 class="Deck-List">Deck Lists</h3>
-        <select class="search-order">
-            <option value="DragonDeck">Dragon Deck</option>
-        </select>
-</div>
-        
-    
-</div>
-<!-- graph and data container -->
-
-    <div id="graph-container" class="cell large-10 flex-container align-right ">
-        <div id="mana-graph" class="grid-1 callout">
-            <h3>Color Mana Curve</h3>
-            <canvas id="myChart"></canvas>
-            </div>
-          
-            <div id="total-graph"class="grid-2 callout">
-                <h3>Total Mana Curve</h3>
-                <canvas id="myChart2" ></canvas>
- 
-            </div>          
-            
-        </div>
-    </div>  
-    <!-- Deck Breakdown -->
-    <div class="grid-x grid-padding-x align-center">
-    <div  class="cell small-12 flex-container flex-dir-column large-flex-dir-row"></div>
-            <div id="Deck-breakdown">
-                <div class="cell small-12 align-self-top">
-              <h4>Card Catagory Breakdown</h4>
-            </div>
-              <ul id="Deck-List" class="dropdown menu" data-dropdown-menu>
-                <li class="flex-child-auto">
-                  <a href="#">Perments</a>
-                  <ul class="menu">
-                    <li ><a href="#"></a></li>
-                    <!-- ... -->
+                    <li><a href="index.html">Back</a></li>
+                    <li><a href="#map.html">Store Locator</a></li>   
                   </ul>
-                </li>
-                <li class="flex-child-auto"><a href="#">Lands</a></li>
-                <li class="flex-child-auto"><a href="#">Instants / Sorcery</a></li>
-
-              </ul>
+            </div>
+        </div>
+        <br>
+        <div class="grid-x grid-padding-x">
+            <!-- Decklist area -->
+            <div class="large-4 medium-6 cell">
+                <div class="callout">
+                    <p id="Deck-List">Your Decks</p>
+                    <label>Choose A Deck:</label>
+                    <select class="search-order deck-list">
+                        <option value="DragonDeck">Dragon Deck</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <!-- Deck breakdown -->
+            <div class="large-4 medium-6 cell">
+                <div id="Deck-breakdown">
+                    <p>Card Catagory Breakdown</p>
+                    <div class="button-group stacked" id="Deck-List">
+                        <a class="button secondary">Perments</a>
+                        <a class="button secondary">Lands</a>
+                        <a class="button secondary">Instants/Sorcery</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Graph and stats area         -->
+        <div class="grid-x grid-padding-x" id="Deck-breakdown">
+            <div id="graph-container" class="large-4 medium-6 cell">
+                <p>Color Mana Curve</p>
+                <div id="mana-graph" class="callout">
+                    <canvas class="chart" id="myChart"></canvas>
+                </div>
+            </div>
+            <br>
+            <div id="graph-container" class="large-4 medium-6 cell">
+                <p>Total Mana Curve</p>
+                <div id="total-graph" class="callout">
+                    <canvas class="chart" id="myChart2"></canvas>
+                </div>
             </div>
         </div>  
+        
     
+    
+        
+    
+
+            
+        
+        
+    
+
+
+   
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="./assets/js/vendor/jquery.js"></script>
     <script src="./assets/js/vendor/what-input.js"></script>

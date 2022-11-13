@@ -12,16 +12,32 @@
 
 <body>
 
+
+
+    <div class="header-container">
+        <div class="header">
+            <div class="header">
+            <h1 class="header h1bg">DECK BUILDER</h1>
+            <h2 class="header-2">A Magic the Gathering deck building application</h2>
+            </div>
+        </div>
+    </div>
     <div class="deck-aside">
         <!-- Decklist container -->
         <div class="large-2 medium-2 cell">
-            
+            <div class="callout decklist">
+                <a href="deck.html">Deck Breakdown</a>
+                <p>Deck List</p>
+                <p>Deck List</p>
+                <p>Deck List</p>
+            </div>
+            <div class="callout">
                 <h3 class="Deck-List">Deck Lists</h4>
                     <a href="deck.html">Deck Breakdown</a>
                 <select class="deck-list">
                     <option value="DragonDeck">Dragon Deck</option>
                 </select>
-            
+            </div>
         </div>
     </div>
 
@@ -89,6 +105,8 @@
             <div class="large-9 medium-8 cell">
                 <div class="callout search-results">
                     <div class="search-header">Search Results
+                        <label style="border-radius: 4px;" class="center-text">Search for a card, then click on a result to show data and
+                            pricing information.</label>
                         <div class="order-container">
                             <button class="header-btn btn-order" name="Order"></button>
                         </div>
@@ -152,10 +170,13 @@
                                 </div>
                                 <div class="retail-container fade-in">
                                     <div class="retail fade-in" id="cardhoarder">
+                                        <a class="cardhoarder"></a>
                                     </div>
                                     <div class="retail fade-in" id="cardmarket">
+                                        <a class="cardmarket"></a>
                                     </div>
                                     <div class="retail fade-in" id="tcgplayer">
+                                        <a class="tcgplayer"></a>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +189,8 @@
         <div class="grid-x grid-padding-x">
             <div class="large-12 cell">
                 <div class="callout">
-                    <p>History - Previously selected cards</p>
+                    <p>History</p>
+                    <div style="text-align:center; border-radius: 4px; margin: 0.25em;">Click a previously selected card to show stats and pricing information.</div>
                     <div class="history-card-container fade-in">
                         <img id="first-small" class="small-card" alt="">
                     </div>
