@@ -9,6 +9,10 @@
 h1{
   color: rgb(17, 240, 9);
 }
+h2 {
+  color: rgb(17, 240, 9);
+  text-align: center;
+}
 #Decklist{
   background-image: url('https://preview.redd.it/fr7g5swymhc41.png?width=640&crop=smart&auto=webp&s=930c8edaa0acc0755c71c3d737840d08a9e9a0b0');
       background-repeat: no-repeat;
