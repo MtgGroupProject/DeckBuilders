@@ -1,25 +1,47 @@
-header {
-    background-color: rgb(54, 0, 54);
+.background {
+    background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: relative;
+    background-color: azure;
 }
 
-header h1 {
-    color: rgb(215, 215, 215);
-    text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+.top-bar {
+    background-color: black;
+}
+
+.top-bar ul {
+    background-color: black;
+}
+
+.top-bar ul li {
+    background-color: black;
+    color: aliceblue;
 }
 
 p {
-    color: rgb(53, 53, 53);
-    padding-top: 1rem;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 0 .25em;
+}
+
+a {
+    color: aliceblue;
+}
+
+div {
+    padding: 0.25em;
+    border-radius: 10px;
+}
+
+h1 {
+    color: aliceblue;
 }
 
 label {
     color: rgb(53, 53, 53);
-}
-
-footer {
-    background-color: black;
 }
 
 input {
@@ -28,8 +50,4 @@ input {
 
 .button {
     background-color: rgb(53, 53, 53);
-}
-
-body {
-    background-color: rgb(171, 171, 171);
 }
