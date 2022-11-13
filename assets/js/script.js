@@ -63,12 +63,30 @@ const fadeInElements = $(".fade-in");
 const cardhoarderEl = $(".cardhoarder");
 const cardmarketEl = $(".cardmarket");
 const tcgplayerEl = $(".tcgplayer")
-
+const newDeckBtn = $("#new-deck-btn");
+const addCardBtn = $("#add-card-btn");
+const saveDeckBtn = $("#save-deck-btn");
 // setTimeout(function(){
 //   document.body.className="preload";
 // },1);
 
+if(localStorage){
+  for(let i=0;i<Object.keys(localStorage).length;i++){
+    let deckName = JSON.parse(Object.keys(localStorage)[i]);
+    let deckOption = document.createElement("option");
+    $(deckOption).val(deckName);
+    $(deckOption).text(deckName);
+    console.log(deckOption.defaultSelected);
+    $(".deck-list").append(deckOption);
+    console.log(deckName);
+    console.log("This logic works");
+  }
+}
+$(".deck-list").on("change", function(){
+  addCardBtn.prop("disabled", false);
+})
 
+let globalRetrievedData;
 let checkBoxObj = {};
 
 colorlessCheckBox.on("click",function(e){
@@ -293,7 +311,11 @@ function urlConstructor(order, qString, color, cmc, type, name){
 let namesArray = [];
 let uriArray = [];
 let storedData = [];
-let smallCardArray = []
+let smallCardArray = [];
+var savedCards =[];
+
+var deckSave;
+var deckNameSave;
 function fetchCards(apiURL){
   $("#next-results").css("visibility", "hidden");
   $(".searching-text").css("visibility", "visible");
@@ -308,8 +330,8 @@ function fetchCards(apiURL){
       for(let i=0; i<data.data.length;i++){
         storedData.push(data.data[i])
       }
-      if(localStorage){
-        localStorage.clear();
+      if(sessionStorage){
+        sessionStorage.clear();
       }
       storeCardData();
       apiURL = data.next_page;
@@ -351,7 +373,12 @@ function populateResults(array){
   for(let i=0;i<array.length;i++){
     let listItem = document.createElement("li");
     let listAtag = document.createElement("a");
+    if(array[i].card_faces){
+      listAtag.setAttribute("name", array[i].card_faces[0].name);
+    }
+    if(!array[i].card_faces){
     listAtag.setAttribute("name", array[i].name);
+    }
     listAtag.classList.add("search-result-card");
     listAtag.textContent = array[i].name;
     namesListEl.appendChild(listItem);
@@ -376,7 +403,11 @@ function populateResults(array){
 
   function populateBottom(e){
     console.log(this.name);
-    let retrievedData = JSON.parse(localStorage.getItem(this.name));
+    console.log(this);
+    console.log(this.card_faces);
+    let retrievedData = JSON.parse(sessionStorage.getItem(this.name));
+    globalRetrievedData = retrievedData;
+    $("#add-card-btn").attr("name", this.name);
     console.log(retrievedData)
     $(".card-info-header").text(retrievedData.name);
     $(".card-info-header").fadeIn();
@@ -575,7 +606,6 @@ function populateResults(array){
     //   );
     //   infoLegalitiesEl.fadeIn();
     // }
-
   
   }
   $("a").on("click",populateBottom);
@@ -583,7 +613,12 @@ function populateResults(array){
 
 function storeCardData(){
   for(let i=0; i<storedData.length;i++){
-    localStorage.setItem((storedData[i].name), JSON.stringify(storedData[i]));
+    if(storedData[i].card_faces){
+      sessionStorage.setItem((storedData[i].card_faces[0].name), JSON.stringify(storedData[i]));
+    }
+    if(!storedData[i].card_faces){
+    sessionStorage.setItem((storedData[i].name), JSON.stringify(storedData[i]));
+    }
   }
 }
 
@@ -602,7 +637,99 @@ function clearResults(){
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+var newDeckCounter = 0;
+var repeatCounter = 2;
+var deckArray = [];
+function createDeck(e){
+  console.log(/\s/.test($("#new-deck").val()));
+  if($("#new-deck").val().replace(/\s/g, '').length==0){
+    $("#new-deck").val('');
+    return;
+  }
+  if($("#new-deck").val()!=""){
+    addCardBtn.prop("disabled", false);
+    if(newDeckCounter===0){
+    let newDeckOptionEl = document.createElement("option");
+    newDeckOptionEl.classList.add("deck-option");
+    newDeckOptionEl.textContent = $("#new-deck").val();
+    $(".deck-list").append(newDeckOptionEl);
+    deckArray.push(newDeckOptionEl.textContent);
+    console.log("click");
+    console.log(newDeckCounter);
+    }
+    if(newDeckCounter>0){
+      if(deckArray.includes($("#new-deck").val())){
+        let newDeckOptionEl = document.createElement("option");
+        newDeckOptionEl.classList.add("deck-option");
+        if((newDeckCounter+2)>repeatCounter){
+          newDeckOptionEl.textContent = ($("#new-deck").val())+ " #" + repeatCounter;
+          $(".deck-list").append(newDeckOptionEl);
+          console.log(newDeckCounter);
+          repeatCounter++;
+        }
+      }
+      if(!deckArray.includes($("#new-deck").val())){
+        let newDeckOptionEl = document.createElement("option");
+        newDeckOptionEl.classList.add("deck-option");
+        newDeckOptionEl.textContent = $("#new-deck").val();
+        $(".deck-list").append(newDeckOptionEl);
+        deckArray.push(newDeckOptionEl.textContent);
+        console.log("click");
+        repeatCounter = 2;
+      }
+    }
+    $("#new-deck").val('');
+    newDeckCounter++
+  } 
+}
+let savedSavedDeck;
+newDeckBtn.on("click", createDeck);
+//push decks to array so local storage clear() in fetch cards doesnt delete them, can be stored again in local storage.
+saveDeckBtn.on("click", function(){
+  
+  if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
+  console.log("false");
+  console.log("click");
+  $(".deactive").fadeToggle(100).delay(3000).fadeToggle();
+  let deckOptions = document.querySelectorAll(".deck-option");
+  let savedDeck = savedCards;
+  console.log("NOT WORKING");
+  console.log(savedDeck);
+  localStorage.setItem(JSON.stringify($(".deck-list option:selected").val()), JSON.stringify(savedDeck));
+  savedCards=[];
+  }
+  else{
+    let temp = localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()));
+    let tempParsed = JSON.parse(temp);
+    for(let i=0;i<savedCards.length;i++){
+    tempParsed.push(savedCards[i]);
+    };
+    console.log(tempParsed);
+    console.log("WORKING");
+    localStorage.setItem(JSON.stringify($(".deck-list option:selected").val()), JSON.stringify(tempParsed));
+    savedCards=[];
+  }
 
+});
+$("#add-card-btn").on("click", function(e){
+  e.stopPropagation;
+  e.preventDefault;
+  console.log("click");
+  console.log($("#add-card-btn").attr("name"));
+  $("#add-card-message").text("Card added to deck: " + $(".deck-list option:selected").text() + "!");
+  $("#add-card-message").animate({opacity: 100}, 300).delay(1000).animate({opacity: 0}, 300);
+  //We want the user to be able to put multiples of the same card in a deck, so not including logic to counteract that.
+  savedCards.push(globalRetrievedData);
+})
+
+function createDeckObj(obj, property, value){
+  obj[property] = value;
+}
+
+if($(".deck-list").val("")){
+  addCardBtn.prop("disabled", true);
+  console.log("true");
+}
 
 document.getElementById("cmc-search-btn").addEventListener("click", function(event){
   event.preventDefault();
