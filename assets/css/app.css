@@ -7,11 +7,12 @@
 }
 
 body
-{      background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
+{  background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed; 
-    background-size: cover;
+    background-size: 100%;
     background-position: center center;
+
 
 }
 
