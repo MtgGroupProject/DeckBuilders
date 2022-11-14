@@ -124,6 +124,34 @@ new Chart("myChart2", {
 });
 
 })
+let typeArray = []
+$("#Perments").on("click",function(e){
+  for (i = 0; i < parse.length; i++){
+    let temp = parse[i].type_line.split(" — ")
+    typeArray.push(temp)
+    if (!typeArray.includes("Basic Land") && !typeArray.includes ("Land") && !typeArray.includes ("Legendary Land") && !typeArray.includes ("Insant") && !typeArray.includes ("Sorcery")){
+
+    }
+  }
+  
+})
+$("#Lands").on("click",function(e){
+  for (i = 0; i < parse.length; i++){
+    let temp = parse[i].type_line.split(" — ")
+    typeArray.push(temp)
+    
+  }
+  
+})
+$("#Instants").on("click",function(e){
+  for (i = 0; i < parse.length; i++){
+    let temp = parse[i].type_line.split(" — ")
+    typeArray.push(temp)
+    
+  }
+  
+})
+
 var xValues = ["G", "R", "W", "U", "B"]
 var yValues = [0,0,0,0,0];
 var barColors = ["green", "red", "tan", "blue", "black"];
@@ -133,5 +161,5 @@ console.log(yValues)
 //Color bar Graph
 var xyValues = [];
 //CmC bar graph
-var valuesX = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var valuesY = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var valuesX = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+var valuesY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];

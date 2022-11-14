@@ -48,6 +48,21 @@ table {
   border-radius: 0;
 }
 
+#Deck-breakdown{
+  flex-wrap: wrap;
+}
+.hidden{
+  visibility: hidden;
+}
+.category-container{
+ flex-grow: 1;
+ height: 10em;
+}
+.category{
+  height: 9em;
+  color: black;
+}
+
 .background {
   background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
   background-repeat: no-repeat;
