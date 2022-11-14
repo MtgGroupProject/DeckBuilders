@@ -38,9 +38,11 @@ function handleSearchFormSubmit(event) {
           title: dataMap.results[i].name
         })
       }
-    }  
-    })
+    } 
     initMap();
+    marker.setMap(map)
+    })
+    
     })}
                           // createMarker(results[i]);
   
