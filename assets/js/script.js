@@ -88,18 +88,30 @@ if(localStorage){
 var deckCardCount;
 
 }
+
+
+
 $(".deck-list").on("change", function(){
-  addCardBtn.prop("disabled", false);
+  deckCardCount=0;
+  if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
+    cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + 0);
+  }
+  if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
+    addCardBtn.prop("disabled", true);
+  }
+
+
+  // addCardBtn.prop("disabled", false);
+  $("#cards-in-deck-list").remove();
   let listEl = document.createElement("ol");
   listEl.setAttribute("id", "cards-in-deck-list");
   currentDeckCardsEl.append(listEl);
+  if(localStorage.getItem(JSON.stringify($(".deck-list option:selected").text()))){
   let temp = localStorage.getItem(JSON.stringify($(".deck-list option:selected").text()));
   let temp2 = JSON.parse(temp);
   deckCardCount = temp2.length;
   console.log(temp2);
-  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount);
-  cardCountEl.fadeIn();
-  currentDeckCardsEl.fadeIn();
+  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount)
   for(let i=0; i<temp2.length;i++){
     let listItemEl = document.createElement("li");
     listItemEl.textContent = temp2[i].name;
@@ -107,6 +119,10 @@ $(".deck-list").on("change", function(){
     listEl.appendChild(listItemEl);
   }
   currentDeckCardsHeader.text($(".deck-list option:selected").text() + " Deck Card Names")
+  };
+  cardCountEl.fadeIn();
+  currentDeckCardsEl.fadeIn();
+
 })
 
 let globalRetrievedData;
@@ -669,7 +685,6 @@ function createDeck(e){
     return;
   }
   if($("#new-deck").val()!=""){
-    addCardBtn.prop("disabled", false);
     if(newDeckCounter===0){
     let newDeckOptionEl = document.createElement("option");
     newDeckOptionEl.classList.add("deck-option");
@@ -708,6 +723,7 @@ let savedSavedDeck;
 newDeckBtn.on("click", createDeck);
 //push decks to array so local storage clear() in fetch cards doesnt delete them, can be stored again in local storage.
 saveDeckBtn.on("click", function(){
+  addCardBtn.prop("disabled", false);
   if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
   console.log("false");
   console.log("click");
@@ -731,7 +747,12 @@ saveDeckBtn.on("click", function(){
     localStorage.setItem(JSON.stringify($(".deck-list option:selected").val()), JSON.stringify(tempParsed));
     savedCards=[];
   }
+  if(!deckCardCount==0){
   cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount);
+  }
+  if(deckCardCount==0){
+    cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + 0);
+  }
   // let saveEls = $("#cards-in-deck");
   // $("#cards-in-deck").remove();
   // $("#cards-in-deck-list").append(saveEls);
@@ -744,6 +765,18 @@ saveDeckBtn.on("click", function(){
 $("#add-card-btn").on("click", function(e){
   e.stopPropagation;
   e.preventDefault;
+
+  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount);
+  cardCountEl.fadeIn();
+  currentDeckCardsEl.fadeIn();
+  // let listEl = document.createElement("ol");
+  // listEl.setAttribute("id", "cards-in-deck-list");
+  // currentDeckCardsEl.append(listEl);
+  currentDeckCardsHeader.text($(".deck-list option:selected").text() + " Deck Card Names")
+
+
+
+
   console.log("click");
   console.log($("#add-card-btn").attr("name"));
   $("#add-card-message").text("Card added to deck: " + $(".deck-list option:selected").text() + "!");
@@ -761,6 +794,9 @@ $("#add-card-btn").on("click", function(e){
   unsavedName.setAttribute("list-style", "none");
   unsavedName.setAttribute("id", "cards-in-deck");
   $("#cards-in-deck-list").append(unsavedName);
+
+
+
 })
 
 function createDeckObj(obj, property, value){
