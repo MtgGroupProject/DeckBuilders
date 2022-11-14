@@ -372,9 +372,6 @@ function fetchCards(apiURL){
       for(let i=0; i<data.data.length;i++){
         storedData.push(data.data[i])
       }
-      if(sessionStorage){
-        sessionStorage.clear();
-      }
       storeCardData();
       apiURL = data.next_page;
       if(apiURL != '' && apiURL != null){
