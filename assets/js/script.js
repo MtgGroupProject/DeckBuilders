@@ -69,7 +69,7 @@ const saveDeckBtn = $("#save-deck-btn");
 // setTimeout(function(){
 //   document.body.className="preload";
 // },1);
-
+var deckArray = [];
 if(localStorage){
   for(let i=0;i<Object.keys(localStorage).length;i++){
     let deckName = JSON.parse(Object.keys(localStorage)[i]);
@@ -80,6 +80,7 @@ if(localStorage){
     $(".deck-list").append(deckOption);
     console.log(deckName);
     console.log("This logic works");
+  
   }
 }
 $(".deck-list").on("change", function(){
@@ -639,7 +640,6 @@ function capitalizeFirstLetter(string) {
 };
 var newDeckCounter = 0;
 var repeatCounter = 2;
-var deckArray = [];
 function createDeck(e){
   console.log(/\s/.test($("#new-deck").val()));
   if($("#new-deck").val().replace(/\s/g, '').length==0){
@@ -686,7 +686,6 @@ let savedSavedDeck;
 newDeckBtn.on("click", createDeck);
 //push decks to array so local storage clear() in fetch cards doesnt delete them, can be stored again in local storage.
 saveDeckBtn.on("click", function(){
-  
   if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
   console.log("false");
   console.log("click");
