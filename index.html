@@ -32,20 +32,18 @@
                 <p>Deck List</p>
             </div>
             <div class="callout">
-                <h3 class="Deck-List">Deck Lists</h4>
-                    <a href="deck.html">Deck Breakdown</a>
+                <h3 class="Deck-List">Deck Builder</h3>
+                <p>Create A Deck</p>
+                <label>New Deck Name:</label>
+                <input id='new-deck' type="text" placeholder="New deck name" />
+                <button class="button" class="small-4 small-4 cell" id="new-deck-btn">Create</button>
+                <p>Your Decks</p>
+                <label>Choose A Deck</label>
                 <select class="deck-list">
                     <option value="DragonDeck">Dragon Deck</option>
                 </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="header-container">
-        <div class="header">
-            <div class="header">
-            <h1 class="header h1bg">DECK BUILDER</h1>
-            <h2 class="header-2">A Magic the Gathering deck building application</h2>
+                <p>View Stats</p>
+                <a href="deck.html">Deck Stats</a>
             </div>
         </div>
     </div>
@@ -180,6 +178,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="callout deck-add-container fade-in">
+                                <button class="fade-in" id="add-card-btn">Add Card to Current Deck</button>
+                            </div>
+                            <div class="deactive" id="add-card-message"></div>
                         </div>
                     </div>
                 </div>

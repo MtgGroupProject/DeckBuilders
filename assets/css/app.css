@@ -174,6 +174,7 @@ li, p{
     border-radius: 10px;
     background-color: azure;
     margin: .5em;
+    border: 2px solid goldenrod;
 }
 .current-card{
     /* width: 65%; */
@@ -207,6 +208,7 @@ li, p{
 .large-4.medium-4.cell{
     width: 20%;
     background-color: aliceblue;
+    border: 2px solid goldenrod;
 }
 .flavor-text{
     font-style: italic;
@@ -246,6 +248,17 @@ li, p{
     display: flex;
     justify-content: center;
     background-color: transparent;
+}
+.deactive{
+    display: none;
+    height:max-content;
+    width: fit-content;
+    background: transparent;
+    border-radius: 0;
+    color: darkred;
+}
+.button{
+    border-radius: 4px;
 }
 .btn-cmc{
     background-color: lightcoral;
@@ -291,6 +304,7 @@ li, p{
 .small-card{
     margin: .125em;
     cursor: move;
+    border-radius: 7px;
     transition: 0.2s ease-in-out;
 }
 .small-card:hover{
@@ -393,7 +407,7 @@ select, input{
 .order-btn-container{
     background-color: transparent;
 }
-#cmc-search-btn{
+#cmc-search-btn, #new-deck-btn{
     border-radius: 4px;
 }
 .fade-in{
@@ -401,4 +415,38 @@ select, input{
 }
 #cardhoarder, #cardmarket, #tcgplayer{
     display: none;
+}
+.deck-add-container{
+    width: fit-content;
+    padding: 0.5em;
+    margin: 2em;
+    margin-top: 5em;
+    left: 35%;
+}
+#add-card-btn{
+    background-color: darkred;
+    outline: none;
+    border: 1px solid black;
+    width: 12rem;
+    border-radius: 4px;
+    height: 3rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+#add-card-btn:hover{
+    background-color: rgb(238, 177, 177);
+}
+#add-card-btn:active{
+    transform: scale(99%)
+}
+#add-card-message{
+    margin-left: 20.5rem;
+    margin-bottom: 1em;
+    text-align: center;
+    display: block;
+    opacity: 0;
+}
+#add-card-btn:disabled{
+    background-color: grey;
+    pointer-events: none;
 }
