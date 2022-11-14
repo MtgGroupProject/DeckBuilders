@@ -82,7 +82,7 @@ table {
   background-color: azure;
 }
 body,html{
-  height: 100%;
+  /* height: 100%; */
 }
 .top-bar {
   background-color: black;
@@ -107,6 +107,24 @@ a {
 /* Charts fill the width of their container */
 .chart {
   width: 100%
+}
+.top-bar {
+  background-color: black;
+  min-height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em;
+  border-radius: 0;
+  justify-content: center;
+}
+.header{
+  font-size: 32px;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.8), 0 0 0 rgb(255, 255, 255);
+  color: transparent;
+}
+.big{
+  font-size: 48px;
 }
 
 /* #background{

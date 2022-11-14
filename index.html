@@ -22,25 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="deck-aside">
-        <!-- Decklist container -->
-        <div class="large-2 medium-2 cell">
-            <div class="callout">
-                <h3 style="border-radius: 4px; text-align:center; font-weight: bold; color: white;">Deck Manager</h3>
-                <p>Create A Deck</p>
-                <label>New Deck Name:</label>
-                <input id='new-deck' type="text" placeholder="New deck name" />
-                <button class="button" class="small-4 small-4 cell" id="new-deck-btn">Create</button>
-                <p>Your Decks</p>
-                <label>Choose A Deck</label>
-                <select class="deck-list"></select>
-                <button class="button"  id="save-deck-btn">Save Deck</button>
-                <div class="deactive">Decks saved!</div>
-                <p>View Stats</p>
-                <a href="deck.html">Deck Stats</a>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Header area -->
     <div class="grid-container">
@@ -172,10 +154,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="callout deck-add-container fade-in">
-                                <button class="fade-in" id="add-card-btn">Add Card to Current Deck</button>
+                            <div class="deck-add-wrapper fade-in">
+                                <div class="count-add-wrapper">
+                                    <div class="callout deck-add-container fade-in">
+                                        <button class="fade-in" id="add-card-btn">Add Card to Current Deck</button>
+                                    </div>
+                                    <div class="deactive" id="add-card-message"></div>
+                                    <div class="callout" id="card-count"></div>
+                                </div>
                             </div>
-                            <div class="deactive" id="add-card-message"></div>
                         </div>
                     </div>
                 </div>
@@ -190,6 +177,28 @@
                     <div class="history-card-container fade-in">
                         <img id="first-small" class="small-card" alt="">
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="callout deck-cards">
+            <h5></h5>
+        </div>
+        <div class="deck-aside">
+            <!-- Decklist container -->
+            <div class="large-2 medium-2 cell aside-mobile">
+                <div class="callout aside-mobile">
+                    <h3 style="border-radius: 4px; text-align:center; font-weight: bold; color: white;">Deck Manager</h3>
+                    <p>Create A Deck</p>
+                    <label>New Deck Name:</label>
+                    <input id='new-deck' type="text" placeholder="New deck name" />
+                    <button class="button" class="small-4 small-4 cell" id="new-deck-btn">Create</button>
+                    <p>Your Decks</p>
+                    <label>Choose A Deck</label>
+                    <select class="deck-list"></select>
+                    <button class="button"  id="save-deck-btn">Save Deck</button>
+                    <div class="deactive">Deck saved!</div>
+                    <p>View Stats</p>
+                    <a href="deck.html">Deck Stats</a>
                 </div>
             </div>
         </div>
