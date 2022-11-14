@@ -122,24 +122,58 @@ new Chart("myChart2", {
     },
   },
 });
-
 })
+
+function findType(array, typetoCheckFor){
+  let answer =[];
+  for(let i=0;i<array.length;i++){
+    let checkArray = array[i];
+    if(checkArray.includes(typetoCheckFor)){
+      answer.push(typetoCheckFor);
+    }
+  }
+  return answer;
+}
+
+
 let typeArray = []
 $("#Perments").on("click",function(e){
+  let listEl = document.createElement("ul")
   for (i = 0; i < parse.length; i++){
     let temp = parse[i].type_line.split(" — ")
     typeArray.push(temp)
-    if (!typeArray.includes("Basic Land") && !typeArray.includes ("Land") && !typeArray.includes ("Legendary Land") && !typeArray.includes ("Insant") && !typeArray.includes ("Sorcery")){
-
-    }
   }
+    if (!findType(typeArray,"Basic Land").includes("Basic Land")){
+      listEl.classList.add("classy") 
+      for(i = 0; i < typeArray.length; i++){
+        let listItemEl = document.createElement("li")
+        listItemEl.classList.add("classy") 
+        listItemEl.textContent = parse[i].name
+        console.log("this Work")
+        
+      }
+      $(".hidden").removeClass("hidden")
+      $(".list-append").append(listEl)
+    }
+  
   
 })
+
 $("#Lands").on("click",function(e){
   for (i = 0; i < parse.length; i++){
     let temp = parse[i].type_line.split(" — ")
     typeArray.push(temp)
-    
+    if (typeArray.includes("Basic Land") || typeArray.includes("Land") || typeArray.includes ("Legendary Land")){
+      let listEl = document.createElement("ul")
+      listEl.classList.add("classy") 
+      for(i = 0; i < typeArray.length; i++){
+        let listItemEl = document.createElement("li")
+        listItemEl.classList.add("classy") 
+        listItemEl.textContent = parse[i].name
+      }
+      $(".hidden").removeClass("hidden")
+      $(".list-append").append(listEl)
+    }
   }
   
 })
@@ -147,7 +181,9 @@ $("#Instants").on("click",function(e){
   for (i = 0; i < parse.length; i++){
     let temp = parse[i].type_line.split(" — ")
     typeArray.push(temp)
-    
+    if (typeArray.includes ("Insant") || typeArray.includes ("Sorcery")){
+
+    }
   }
   
 })

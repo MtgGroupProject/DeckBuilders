@@ -4,6 +4,9 @@
     position: relative;
     padding: 0;
 }
+#Deck {
+    background-color: white ;
+}
 
 body
 {      background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
@@ -40,7 +43,7 @@ body
     transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
 } */
 *{
-    background-color: rgba(0, 0, 0, 0.553);
+    background-color: rgba(0, 0, 0, 0.553); 
     outline-color: rgb(255, 255, 255);
     color: aliceblue;
 }

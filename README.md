@@ -1,11 +1,15 @@
 # DeckBuilders
 ## Link to App
-
+[DeckBuilder](https://mtggroupproject.github.io/DeckBuilders/)
 ## About this app
 This app helps new and old players of magic the gathering to make new decks digitally and see their deck broken down in several ways. The motivation of this project is to help the magic the gathering community to have an easier way to view the content of their deck. This app will make it so the user can either make a new deck or take an existing deck and view some key information about it. This app will solve problems such as having to spread a deck out on a table or floor and having to do all the breakdown in your head. This app also solves when building a new deck the user can look at what it will look like before actually building it.
 
 ## Code Usage 
-srcyfall api, google maps api, javascript, css, and foundation
+* srcyfall api 
+* google maps api 
+* javascript 
+* css 
+* foundation
 
 
 
@@ -15,18 +19,35 @@ The user can first name a deck to store cards inside that decks name. Then the u
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+![Header](./assets/img/Header.png)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![sreach area](./assets/img/search%20area.png)
 
+![after search](./assets/img/after%20search%20result.png)
+
+![card image](./assets/img/card%20img%20after%20search.png)
+
+![search history](./assets/img/search%20history.png)
+
+![Store Locator](./assets/img/store%20locator.png)
  
 
 ## Credits
-James Ioriatti [https://github.com/JIoriatti]
-Maggie Matson [https://github.com/mmmatson]
-Matt Fischer [https://github.com/MfischerTurtle]
+* James Ioriatti [https://github.com/JIoriatti]
+
+* Maggie Matson [https://github.com/mmmatson]
+
+* Matt Fischer [https://github.com/MfischerTurtle]
 
 ## Future development 
+* show image of cards on hover in card search
+* show images of cards on hover in card breakdown
+* driving direction for nearest store search
+* drag and drop function for adding cards to deck
+* playtest section to test deck
+* play with deck against other people on app
+* more in depth search parameters
+* more in depth breakdown of card types
 
 
 

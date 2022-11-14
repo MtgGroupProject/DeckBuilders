@@ -48,8 +48,18 @@ table {
   border-radius: 0;
 }
 
+#myChart{
+  background-color: white;
+}
+
+#myChart2 {
+  background-color: white;
+
+}
+
 #Deck-breakdown{
   flex-wrap: wrap;
+ 
 }
 .hidden{
   visibility: hidden;
