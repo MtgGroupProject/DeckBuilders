@@ -99,6 +99,9 @@ $(".deck-list").on("change", function(){
   if(!localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
     addCardBtn.prop("disabled", true);
   }
+  if(localStorage.getItem(JSON.stringify($(".deck-list option:selected").val()))){
+    addCardBtn.prop("disabled", false);
+  }
 
 
   // addCardBtn.prop("disabled", false);
