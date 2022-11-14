@@ -28,32 +28,43 @@ for(let i = 0; i < DeckNames.length;i++){
 let temp = ""
 let parse = []
 $(".classy").on("click",function(e){
+  xValues = ["G", "R", "W", "U", "B"]
+  yValues = [0,0,0,0,0];
+  barColors = ["green", "red", "tan", "blue", "black"];
+  // console.log(Decklist.length)
+  //Color bar Graph
+  xyValues = [];
+  //CmC bar graph
+  valuesX = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  valuesY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+
+
+
+
  temp = localStorage.getItem(JSON.stringify($(this).text()))
+ console.log(this)
  parse = JSON.parse(temp)
- console.log(parse)
- console.log(parse[0].colors.length)
+ console.log(parse.length);
  for (i = 0; i < parse.length; i++) {
   for (j = 0; j < parse[i].colors.length; j++) {
-    console.log("this is work")
     if (parse[i].colors[j] == "G") {
       yValues[0] = yValues[0] + 1;
-      console.log(yValues[0])
+      
     }
     if (parse[i].colors[j] == "R") {
       yValues[1] = yValues[1] + 1;
-      console.log(yValues[1])
     }
     if (parse[i].colors[j] == "W") {
       yValues[2] = yValues[2] + 1;
-      console.log(yValues[2])
     }
     if (parse[i].colors[j] == "U") {
       yValues[3] = yValues[3] + 1;
-      console.log(yValues[3])
+      
     }
     if (parse[i].colors[j] == "B") {
       yValues[4] = yValues[4] + 1;
-      console.log(yValues[4])
+      
     }
   }
 }
@@ -86,15 +97,12 @@ new Chart("myChart", {
 });
 for (let i = 0; i <  parse.length; i++) {
   for (let j = 0; j < parse.length; j++) {
-    console.log(i)
-    console.log(parse[j].cmc == i);
+
     if(parse[j].cmc == i) {
       valuesY[i] = valuesY[i] + 1
     }
   }
 }
-console.log(valuesX);
-console.log(valuesY);
 new Chart("myChart2", {
   type: "bar",
   data: {
