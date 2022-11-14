@@ -28,6 +28,12 @@ for(let i = 0; i < DeckNames.length;i++){
 let temp = ""
 let parse = []
 $(".classy").on("click",function(e){
+  var xValues = ["G", "R", "W", "U", "B"]
+  var yValues = [0,0,0,0,0];
+  var barColors = ["green", "red", "tan", "blue", "black"];
+  var valuesX = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  var valuesY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
  temp = localStorage.getItem(JSON.stringify($(this).text()))
  parse = JSON.parse(temp)
  console.log(parse)
@@ -128,11 +134,7 @@ new Chart("myChart2", {
 var xValues = ["G", "R", "W", "U", "B"]
 var yValues = [0,0,0,0,0];
 var barColors = ["green", "red", "tan", "blue", "black"];
-// console.log(Decklist.length)
-console.log(parse)
-console.log(yValues)
-//Color bar Graph
-var xyValues = [];
-//CmC bar graph
+
+
 var valuesX = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 var valuesY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
