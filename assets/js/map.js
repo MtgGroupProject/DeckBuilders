@@ -30,7 +30,7 @@ function handleSearchFormSubmit(event) {
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: placeInput,
-        zoom: 15
+        zoom: 11
       })
       for (var i = 0; i < dataMap.results.length; i++) {
         var marker = new google.maps.Marker({
