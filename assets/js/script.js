@@ -66,6 +66,9 @@ const tcgplayerEl = $(".tcgplayer")
 const newDeckBtn = $("#new-deck-btn");
 const addCardBtn = $("#add-card-btn");
 const saveDeckBtn = $("#save-deck-btn");
+const cardCountEl = $("#card-count");
+const currentDeckCardsEl = $(".deck-cards");
+const currentDeckCardsHeader = $("h5");
 // setTimeout(function(){
 //   document.body.className="preload";
 // },1);
@@ -82,9 +85,28 @@ if(localStorage){
     console.log("This logic works");
   
   }
+var deckCardCount;
+
 }
 $(".deck-list").on("change", function(){
   addCardBtn.prop("disabled", false);
+  let listEl = document.createElement("ol");
+  listEl.setAttribute("id", "cards-in-deck-list");
+  currentDeckCardsEl.append(listEl);
+  let temp = localStorage.getItem(JSON.stringify($(".deck-list option:selected").text()));
+  let temp2 = JSON.parse(temp);
+  deckCardCount = temp2.length;
+  console.log(temp2);
+  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount);
+  cardCountEl.fadeIn();
+  currentDeckCardsEl.fadeIn();
+  for(let i=0; i<temp2.length;i++){
+    let listItemEl = document.createElement("li");
+    listItemEl.textContent = temp2[i].name;
+    listItemEl.setAttribute("id", "cards-in-deck");
+    listEl.appendChild(listItemEl);
+  }
+  currentDeckCardsHeader.text($(".deck-list option:selected").text() + " Deck Card Names")
 })
 
 let globalRetrievedData;
@@ -704,11 +726,20 @@ saveDeckBtn.on("click", function(){
     tempParsed.push(savedCards[i]);
     };
     console.log(tempParsed);
+    $(".deactive").fadeToggle(100).delay(3000).fadeToggle();
     console.log("WORKING");
     localStorage.setItem(JSON.stringify($(".deck-list option:selected").val()), JSON.stringify(tempParsed));
     savedCards=[];
   }
-
+  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount);
+  // let saveEls = $("#cards-in-deck");
+  // $("#cards-in-deck").remove();
+  // $("#cards-in-deck-list").append(saveEls);
+  if($("#cards-in-deck").css("color", "red")){
+    for(let i=0;i<document.querySelectorAll("#cards-in-deck").length;i++){
+      document.querySelectorAll("#cards-in-deck")[i].setAttribute("style", "color:black;");
+    }
+  }
 });
 $("#add-card-btn").on("click", function(e){
   e.stopPropagation;
@@ -719,6 +750,17 @@ $("#add-card-btn").on("click", function(e){
   $("#add-card-message").animate({opacity: 100}, 300).delay(1000).animate({opacity: 0}, 300);
   //We want the user to be able to put multiples of the same card in a deck, so not including logic to counteract that.
   savedCards.push(globalRetrievedData);
+  let temp = localStorage.getItem(JSON.stringify($(".deck-list option:selected").text()));
+  let temp2 = JSON.parse(temp);
+  let initdeckCardCount = temp2.length;
+  deckCardCount = initdeckCardCount + savedCards.length;
+  cardCountEl.text($(".deck-list option:selected").text() + " deck cards: " + deckCardCount + " ("+ savedCards.length + " unsaved)");
+  let unsavedName = document.createElement("li");
+  unsavedName.textContent = this.name;
+  unsavedName.setAttribute("style", "color: red;");
+  unsavedName.setAttribute("list-style", "none");
+  unsavedName.setAttribute("id", "cards-in-deck");
+  $("#cards-in-deck-list").append(unsavedName);
 })
 
 function createDeckObj(obj, property, value){

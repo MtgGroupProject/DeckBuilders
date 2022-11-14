@@ -1,15 +1,19 @@
 .callout.search-results{
-    height: 30em;
+    align-items: stretch;
+    max-height: 50em;
     overflow: scroll;
     position: relative;
     padding: 0;
 }
-
+html{
+    background-color: transparent;
+}
 body
 {      background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed; 
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center center;
 
 }
 
@@ -45,7 +49,7 @@ body
     color: aliceblue;
 }
 body{
-    position: relative;
+    /* position: relative; */
     background-color: azure;
 }
 p{
@@ -111,6 +115,7 @@ li, p{
 .grid-container{
     border-radius: 10px;
     max-width: 85rem;
+    position: relative;
 }
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px azure;
@@ -181,9 +186,9 @@ li, p{
     width:fit-content;
     margin: 0;
     padding: 0;
-    left: 87%;
+    right: -240px;
     position:absolute;
-    top: 70%;
+    bottom: 0;
     z-index: 1000;
 }
 .large-2.medium-2.cell{
@@ -196,10 +201,16 @@ li, p{
 .grid-x{
     flex-grow: 1;
 }
+.large-4.medium-6.cell{
+    /* margin-bottom: 10em; */
+}
 .large-4.medium-4.cell{
     width: 20%;
+    margin-top: 0.75em;
     background-color: aliceblue;
     border: 2px solid goldenrod;
+    height: 75%;
+    min-height: 12em;
 }
 .flavor-text{
     font-style: italic;
@@ -336,13 +347,12 @@ li, p{
     flex-direction: column;
     align-items: baseline;
 }
-/* .large-8.medium-6.cell{
+ /* .large-8.medium-6.cell{
 width: fit-content;
-}
-.grid-x.grid-padding.container-1{
-    display: flex;
-    flex-direction: row;
 } */
+/* .grid-x.grid-padding.container-1{
+   align-items: center;
+}  */
 .large-9.medium-8.cell{
     width: 80%;
 }
@@ -410,9 +420,19 @@ select, input{
 .deck-add-container{
     width: fit-content;
     padding: 0.5em;
-    margin: 2em;
-    margin-top: 5em;
-    left: 35%;
+    /* left: 35%; */
+}
+.deck-add-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.count-add-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #add-card-btn{
     background-color: darkred;
@@ -422,6 +442,8 @@ select, input{
     border-radius: 4px;
     height: 3rem;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
     transition: 0.2s;
 }
 #add-card-btn:hover{
@@ -431,7 +453,6 @@ select, input{
     transform: scale(99%)
 }
 #add-card-message{
-    margin-left: 20.5rem;
     margin-bottom: 1em;
     text-align: center;
     display: block;
@@ -440,4 +461,104 @@ select, input{
 #add-card-btn:disabled{
     background-color: grey;
     pointer-events: none;
+}
+#card-count{
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0.5em;
+}
+.deck-cards{
+    display: none;
+    height: fit-content;
+    max-height: 100%;
+    overflow: scroll;
+    width: 15em;
+    min-width: 15em;
+    position: absolute;
+    left: -250px;
+    top: 0;
+    padding: 0;
+}
+h5{
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    position: sticky;
+    top: 0;
+    overflow:hidden;
+    background: rgba(0, 0, 0, 1);
+    margin: 0;
+}
+#cards-in-deck{
+    border: none !important;
+    border-radius: 0;
+    color: black;
+    outline: none !important;
+    margin: 0;
+    font-size: 16px;
+    background: transparent;
+    text-align: center;
+    /* flex:1 0 33.33%; */
+    transition: 0.1s;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: no-wrap;
+}
+#cards-in-deck-list{
+    /* display: flex; */
+    /* width: 95%; */
+    /* flex-wrap: wrap; */
+    columns: 1 auto;
+    border: 2px solid grey !important;
+    border-radius: 4px;
+    background: transparent;
+    margin: 1em;
+    list-style: none;
+}
+@media (max-width:1860px){
+    .deck-aside{
+        display: flex;
+        flex-direction: column;
+        position: static;
+        bottom: 0;
+        min-width: 100%;
+    }
+    .deck-cards{
+        display: flex;
+        flex-direction: column;
+        position: static;
+        bottom: 0;
+        min-width: 100%;
+    }
+    #cards-in-deck-list{
+        columns: 4;
+    }
+    .aside-mobile{
+        min-width: 100%;
+    }
+}
+@media (max-width: 750px){
+    body,html{
+        width: 100%;
+        background-color: transparent;
+    }
+    body{
+        /* background: fixed; */
+    }
+    .grid-container{
+        min-width: 40em;
+    }
+    .checkbox-container{
+        margin-left: 0;
+    }
+    .header-container{
+        min-width: 40em;
+    }
+    .search-results,.search-names{
+        align-items: stretch;
+    }
+    .large-9.medium-8.cell{
+        display: grid;
+    }
 }

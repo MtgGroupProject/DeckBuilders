@@ -50,6 +50,19 @@ table {
 
 .top-bar {
     background-color: black;
+    min-height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em;
+}
+.header{
+    font-size: 32px;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.8), 0 0 0 rgb(255, 255, 255);
+    color: transparent;
+}
+.big{
+    font-size: 48px;
 }
 
 .top-bar ul {
@@ -114,4 +127,7 @@ input {
 }
 .large-8.medium-8.cell{
     background-color: rgba(0, 0, 0, 0.553);
+}
+.menu-align-right{
+    max-height: fit-content;
 }
