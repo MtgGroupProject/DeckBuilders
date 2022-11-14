@@ -42,7 +42,11 @@ table {
 	border-spacing: 0;
 }
 
-
+.classy{
+  color: black;
+  list-style: none;
+  border-radius: 0;
+}
 
 .background {
   background-image: url('https://www.gmbinder.com/images/kDpgLpH.jpg');

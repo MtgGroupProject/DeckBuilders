@@ -122,6 +122,7 @@ new Chart("myChart2", {
     },
   },
 });
+
 })
 var xValues = ["G", "R", "W", "U", "B"]
 var yValues = [0,0,0,0,0];
